@@ -8,5 +8,5 @@ export const config = {
   elasticURL: "localhost:9200",
   elasticLoglevel: "trace",
   elasticindexName: "edx-webpages",
-  debugLog: true
+  debugLog: false
 };

@@ -1,6 +1,6 @@
 import {config} from '../imports/config.js';
 import {SimpleSchema} from 'meteor/aldeed:simple-schema';
-import {Fiber, Future } from 'fibers'
+import {Fiber, Future} from 'fibers'
 const influx = require('influx');
 const elasticsearch = require('elasticsearch');
 
@@ -21,7 +21,10 @@ if (config.elastic) {
 if (config.influxdb) {
   influxdb = influx(!!config.influxdbURL ? config.influxdbURL : "http://edx:edx@127.0.0.1:8086/edx");
   influxdb.setRequestTimeout(!!config.influxdbRequestTimeout ? config.influxdbRequestTimeout : 1000);
+  var sq = Meteor.wrapAsync(influxdb.query,influxdb);
 
+// https://themeteorchef.com/snippets/synchronous-methods/
+  
   Meteor.methods({
     'influxdb.query'({query}) {
       new SimpleSchema({
@@ -29,47 +32,34 @@ if (config.influxdb) {
       }).validate({query});
       var res = {};
 
-      var process = function(query){
-        var fiber = Fiber.current;
-        influxdb.query(query, function (err, result) {
-          if (err) {
-            res = err;
-            fiber.run();
-            //throw new Meteor.Error('influx.query.error', err);
-          }
-          else {
-            console.log("1");
-            res = result;
-            fiber.run();
-          }
-        });
-        Fiber.yield();
-      };
-
-      Fiber(function () {
-        process(query);
-        console.log("2");
-      }).run();
-      console.log("3");
+      res = sq(query, function (err, result) {
+        if (err) {
+          return err;
+          console.log("11");
+          throw new Meteor.Error('influx.query.error', err);
+        }
+        else {
+          console.log("1");
+          return result;
+        }
+      });
+      console.log("2");
       return res;
     }
   });
 }
 
 /*
+Test call from browser:
 
-
- Meteor.call('influxdb.query', {
- query: "select value,writeKey from edx_webpages where writeKey != ''"
- }, (err, res) => {
- if (err) {
- console.log("ERROROOOO!");
- console.log(err);
- } else {
- console.log(res)
- }
- });
-
-
-
+Meteor.call('influxdb.query', {
+query: "select value,writeKey from edx_webpages where writeKey != ''"
+}, (err, res) => {
+if (err) {
+console.log("ERROR-ERROR!");
+console.log(err);
+} else {
+console.log(res)
+}
+});
 */
