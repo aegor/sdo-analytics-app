@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<!-- saved from url=(0070)https://medium.com/media/51aefbe38cf999f4bf02f1fffc91056a?maxWidth=700 -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta name="twitter:widgets:csp" content="on"><meta name="robots" content="noindex"><!--<base target="_blank">--><base href="." target="_blank"><style>body {text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; font-family: "ff-tisa-web-pro", Georgia, Cambria, "Times New Roman", Times, serif; font-weight: 400; color: #333332; font-size: 18px; line-height: 1.4; margin: 0; background-color: white; overflow: hidden;}iframe {max-width: 100%;}</style><script type="text/javascript">try {
+window.AG_onLoad = function(func) { if (window.addEventListener) { window.addEventListener('DOMContentLoaded', func); } };
+window.AG_removeElementById = function(id) { var element = document.getElementById(id); if (element && element.parentNode) { element.parentNode.removeChild(element); }};
+window.AG_removeElementBySelector = function(selector) { if (!document.querySelectorAll) { return; } var nodes = document.querySelectorAll(selector); if (nodes) { for (var i = 0; i < nodes.length; i++) { if (nodes[i] && nodes[i].parentNode) { nodes[i].parentNode.removeChild(nodes[i]); } } } };
+window.AG_each = function(selector, fn) { if (!document.querySelectorAll) return; var elements = document.querySelectorAll(selector); for (var i = 0; i < elements.length; i++) { fn(elements[i]); }; };
+var AG_removeParent = function(el, fn) { while (el && el.parentNode) { if (fn(el)) { el.parentNode.removeChild(el); return; } el = el.parentNode; } };
+var AdFox_getCodeScript = function() {};
+AG_onLoad(function() { window.AG_each('iframe[id^="AdFox_iframe_"]', function(el) { if (el && el.parentNode) { el.parentNode.removeChild(el); } }); });
+try { Object.defineProperty(window, 'noAdsAtAll', { get: function() { return true; } }); } catch (ex) {}
+} catch (ex) { console.error('Error executing AG js: ' + ex); }</script></head><body><style>.gist .gist-file { margin-bottom: 0 !important; }.gist { text-rendering: auto; }</style><script src="./a6454b922901d0f97c60.js" charset="utf-8"></script><link rel="stylesheet" href="./gist-embed-388b069d66e6d3bd1f07d4a206ef1fa31d50dffe23ee28e23708b8a25537af01.css"><div id="gist17674074" class="gist">
+    <div class="gist-file">
+      <div class="gist-data">
+        <div class="js-gist-file-update-container js-task-list-container file-box">
+  <div id="file-pub-album_edit-js" class="file">
+    
+
+  <div itemprop="text" class="blob-wrapper data type-javascript">
+      <table class="highlight tab-size js-file-line-container" data-tab-size="8">
+      <tbody><tr>
+        <td id="file-pub-album_edit-js-L1" class="blob-num js-line-number" data-line-number="1"></td>
+        <td id="file-pub-album_edit-js-LC1" class="blob-code blob-code-inner js-file-line"><span class="pl-smi">Meteor</span>.<span class="pl-en">publish</span>(<span class="pl-s"><span class="pl-pds">"</span>album_edit<span class="pl-pds">"</span></span>, <span class="pl-k">function</span>(<span class="pl-smi">albumId</span>) </td>
+      </tr>
+      <tr>
+        <td id="file-pub-album_edit-js-L2" class="blob-num js-line-number" data-line-number="2"></td>
+        <td id="file-pub-album_edit-js-LC2" class="blob-code blob-code-inner js-file-line">{</td>
+      </tr>
+      <tr>
+        <td id="file-pub-album_edit-js-L3" class="blob-num js-line-number" data-line-number="3"></td>
+        <td id="file-pub-album_edit-js-LC3" class="blob-code blob-code-inner js-file-line">	<span class="pl-en">check</span>(albumId, <span class="pl-c1">String</span>);</td>
+      </tr>
+      <tr>
+        <td id="file-pub-album_edit-js-L4" class="blob-num js-line-number" data-line-number="4"></td>
+        <td id="file-pub-album_edit-js-LC4" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="file-pub-album_edit-js-L5" class="blob-num js-line-number" data-line-number="5"></td>
+        <td id="file-pub-album_edit-js-LC5" class="blob-code blob-code-inner js-file-line">	<span class="pl-k">if</span> (<span class="pl-k">!</span>(<span class="pl-v">this</span>.<span class="pl-smi">userId</span> <span class="pl-k">||</span> albumId))</td>
+      </tr>
+      <tr>
+        <td id="file-pub-album_edit-js-L6" class="blob-num js-line-number" data-line-number="6"></td>
+        <td id="file-pub-album_edit-js-LC6" class="blob-code blob-code-inner js-file-line">	{</td>
+      </tr>
+      <tr>
+        <td id="file-pub-album_edit-js-L7" class="blob-num js-line-number" data-line-number="7"></td>
+        <td id="file-pub-album_edit-js-LC7" class="blob-code blob-code-inner js-file-line">		<span class="pl-v">this</span>.<span class="pl-en">ready</span>();</td>
+      </tr>
+      <tr>
+        <td id="file-pub-album_edit-js-L8" class="blob-num js-line-number" data-line-number="8"></td>
+        <td id="file-pub-album_edit-js-LC8" class="blob-code blob-code-inner js-file-line">		<span class="pl-k">return</span>;</td>
+      </tr>
+      <tr>
+        <td id="file-pub-album_edit-js-L9" class="blob-num js-line-number" data-line-number="9"></td>
+        <td id="file-pub-album_edit-js-LC9" class="blob-code blob-code-inner js-file-line">	}</td>
+      </tr>
+      <tr>
+        <td id="file-pub-album_edit-js-L10" class="blob-num js-line-number" data-line-number="10"></td>
+        <td id="file-pub-album_edit-js-LC10" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="file-pub-album_edit-js-L11" class="blob-num js-line-number" data-line-number="11"></td>
+        <td id="file-pub-album_edit-js-LC11" class="blob-code blob-code-inner js-file-line">	<span class="pl-k">var</span> album, album_unpublishedFields;</td>
+      </tr>
+      <tr>
+        <td id="file-pub-album_edit-js-L12" class="blob-num js-line-number" data-line-number="12"></td>
+        <td id="file-pub-album_edit-js-LC12" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="file-pub-album_edit-js-L13" class="blob-num js-line-number" data-line-number="13"></td>
+        <td id="file-pub-album_edit-js-LC13" class="blob-code blob-code-inner js-file-line">	album <span class="pl-k">=</span> <span class="pl-smi">Albums</span>.<span class="pl-c1">find</span>(</td>
+      </tr>
+      <tr>
+        <td id="file-pub-album_edit-js-L14" class="blob-num js-line-number" data-line-number="14"></td>
+        <td id="file-pub-album_edit-js-LC14" class="blob-code blob-code-inner js-file-line">		{</td>
+      </tr>
+      <tr>
+        <td id="file-pub-album_edit-js-L15" class="blob-num js-line-number" data-line-number="15"></td>
+        <td id="file-pub-album_edit-js-LC15" class="blob-code blob-code-inner js-file-line">			_id<span class="pl-k">:</span> albumId,</td>
+      </tr>
+      <tr>
+        <td id="file-pub-album_edit-js-L16" class="blob-num js-line-number" data-line-number="16"></td>
+        <td id="file-pub-album_edit-js-LC16" class="blob-code blob-code-inner js-file-line">			owner<span class="pl-k">:</span> <span class="pl-v">this</span>.<span class="pl-smi">userId</span></td>
+      </tr>
+      <tr>
+        <td id="file-pub-album_edit-js-L17" class="blob-num js-line-number" data-line-number="17"></td>
+        <td id="file-pub-album_edit-js-LC17" class="blob-code blob-code-inner js-file-line">		},</td>
+      </tr>
+      <tr>
+        <td id="file-pub-album_edit-js-L18" class="blob-num js-line-number" data-line-number="18"></td>
+        <td id="file-pub-album_edit-js-LC18" class="blob-code blob-code-inner js-file-line">		{</td>
+      </tr>
+      <tr>
+        <td id="file-pub-album_edit-js-L19" class="blob-num js-line-number" data-line-number="19"></td>
+        <td id="file-pub-album_edit-js-LC19" class="blob-code blob-code-inner js-file-line">			fields<span class="pl-k">:</span></td>
+      </tr>
+      <tr>
+        <td id="file-pub-album_edit-js-L20" class="blob-num js-line-number" data-line-number="20"></td>
+        <td id="file-pub-album_edit-js-LC20" class="blob-code blob-code-inner js-file-line">			{</td>
+      </tr>
+      <tr>
+        <td id="file-pub-album_edit-js-L21" class="blob-num js-line-number" data-line-number="21"></td>
+        <td id="file-pub-album_edit-js-LC21" class="blob-code blob-code-inner js-file-line">				<span class="pl-s"><span class="pl-pds">'</span>title.unpublished<span class="pl-pds">'</span></span><span class="pl-k">:</span> <span class="pl-c1">0</span>,</td>
+      </tr>
+      <tr>
+        <td id="file-pub-album_edit-js-L22" class="blob-num js-line-number" data-line-number="22"></td>
+        <td id="file-pub-album_edit-js-LC22" class="blob-code blob-code-inner js-file-line">				<span class="pl-s"><span class="pl-pds">'</span>slug.unpublished<span class="pl-pds">'</span></span><span class="pl-k">:</span> <span class="pl-c1">0</span></td>
+      </tr>
+      <tr>
+        <td id="file-pub-album_edit-js-L23" class="blob-num js-line-number" data-line-number="23"></td>
+        <td id="file-pub-album_edit-js-LC23" class="blob-code blob-code-inner js-file-line">			}</td>
+      </tr>
+      <tr>
+        <td id="file-pub-album_edit-js-L24" class="blob-num js-line-number" data-line-number="24"></td>
+        <td id="file-pub-album_edit-js-LC24" class="blob-code blob-code-inner js-file-line">		}</td>
+      </tr>
+      <tr>
+        <td id="file-pub-album_edit-js-L25" class="blob-num js-line-number" data-line-number="25"></td>
+        <td id="file-pub-album_edit-js-LC25" class="blob-code blob-code-inner js-file-line">	);</td>
+      </tr>
+      <tr>
+        <td id="file-pub-album_edit-js-L26" class="blob-num js-line-number" data-line-number="26"></td>
+        <td id="file-pub-album_edit-js-LC26" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="file-pub-album_edit-js-L27" class="blob-num js-line-number" data-line-number="27"></td>
+        <td id="file-pub-album_edit-js-LC27" class="blob-code blob-code-inner js-file-line">	album_unpublishedFields <span class="pl-k">=</span> <span class="pl-smi">Albums</span>.<span class="pl-c1">find</span>(</td>
+      </tr>
+      <tr>
+        <td id="file-pub-album_edit-js-L28" class="blob-num js-line-number" data-line-number="28"></td>
+        <td id="file-pub-album_edit-js-LC28" class="blob-code blob-code-inner js-file-line">		{</td>
+      </tr>
+      <tr>
+        <td id="file-pub-album_edit-js-L29" class="blob-num js-line-number" data-line-number="29"></td>
+        <td id="file-pub-album_edit-js-LC29" class="blob-code blob-code-inner js-file-line">			_id<span class="pl-k">:</span> albumId,</td>
+      </tr>
+      <tr>
+        <td id="file-pub-album_edit-js-L30" class="blob-num js-line-number" data-line-number="30"></td>
+        <td id="file-pub-album_edit-js-LC30" class="blob-code blob-code-inner js-file-line">			owner<span class="pl-k">:</span> <span class="pl-v">this</span>.<span class="pl-smi">userId</span></td>
+      </tr>
+      <tr>
+        <td id="file-pub-album_edit-js-L31" class="blob-num js-line-number" data-line-number="31"></td>
+        <td id="file-pub-album_edit-js-LC31" class="blob-code blob-code-inner js-file-line">		},</td>
+      </tr>
+      <tr>
+        <td id="file-pub-album_edit-js-L32" class="blob-num js-line-number" data-line-number="32"></td>
+        <td id="file-pub-album_edit-js-LC32" class="blob-code blob-code-inner js-file-line">		{</td>
+      </tr>
+      <tr>
+        <td id="file-pub-album_edit-js-L33" class="blob-num js-line-number" data-line-number="33"></td>
+        <td id="file-pub-album_edit-js-LC33" class="blob-code blob-code-inner js-file-line">			fields<span class="pl-k">:</span></td>
+      </tr>
+      <tr>
+        <td id="file-pub-album_edit-js-L34" class="blob-num js-line-number" data-line-number="34"></td>
+        <td id="file-pub-album_edit-js-LC34" class="blob-code blob-code-inner js-file-line">			{</td>
+      </tr>
+      <tr>
+        <td id="file-pub-album_edit-js-L35" class="blob-num js-line-number" data-line-number="35"></td>
+        <td id="file-pub-album_edit-js-LC35" class="blob-code blob-code-inner js-file-line">				owner<span class="pl-k">:</span> <span class="pl-c1">1</span>,</td>
+      </tr>
+      <tr>
+        <td id="file-pub-album_edit-js-L36" class="blob-num js-line-number" data-line-number="36"></td>
+        <td id="file-pub-album_edit-js-LC36" class="blob-code blob-code-inner js-file-line">				<span class="pl-s"><span class="pl-pds">'</span>title.unpublished<span class="pl-pds">'</span></span><span class="pl-k">:</span> <span class="pl-c1">1</span>,</td>
+      </tr>
+      <tr>
+        <td id="file-pub-album_edit-js-L37" class="blob-num js-line-number" data-line-number="37"></td>
+        <td id="file-pub-album_edit-js-LC37" class="blob-code blob-code-inner js-file-line">				<span class="pl-s"><span class="pl-pds">'</span>slug.unpublished<span class="pl-pds">'</span></span><span class="pl-k">:</span> <span class="pl-c1">1</span></td>
+      </tr>
+      <tr>
+        <td id="file-pub-album_edit-js-L38" class="blob-num js-line-number" data-line-number="38"></td>
+        <td id="file-pub-album_edit-js-LC38" class="blob-code blob-code-inner js-file-line">			}</td>
+      </tr>
+      <tr>
+        <td id="file-pub-album_edit-js-L39" class="blob-num js-line-number" data-line-number="39"></td>
+        <td id="file-pub-album_edit-js-LC39" class="blob-code blob-code-inner js-file-line">		}</td>
+      </tr>
+      <tr>
+        <td id="file-pub-album_edit-js-L40" class="blob-num js-line-number" data-line-number="40"></td>
+        <td id="file-pub-album_edit-js-LC40" class="blob-code blob-code-inner js-file-line">	);</td>
+      </tr>
+      <tr>
+        <td id="file-pub-album_edit-js-L41" class="blob-num js-line-number" data-line-number="41"></td>
+        <td id="file-pub-album_edit-js-LC41" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="file-pub-album_edit-js-L42" class="blob-num js-line-number" data-line-number="42"></td>
+        <td id="file-pub-album_edit-js-LC42" class="blob-code blob-code-inner js-file-line">	<span class="pl-smi">Mongo</span>.<span class="pl-smi">Collection</span>.<span class="pl-en">_publishCursor</span>(album_unpublishedFields, <span class="pl-v">this</span>, <span class="pl-s"><span class="pl-pds">'</span>CC_Albums_unpublishedFields<span class="pl-pds">'</span></span>);</td>
+      </tr>
+      <tr>
+        <td id="file-pub-album_edit-js-L43" class="blob-num js-line-number" data-line-number="43"></td>
+        <td id="file-pub-album_edit-js-LC43" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="file-pub-album_edit-js-L44" class="blob-num js-line-number" data-line-number="44"></td>
+        <td id="file-pub-album_edit-js-LC44" class="blob-code blob-code-inner js-file-line">	<span class="pl-k">return</span> album;</td>
+      </tr>
+      <tr>
+        <td id="file-pub-album_edit-js-L45" class="blob-num js-line-number" data-line-number="45"></td>
+        <td id="file-pub-album_edit-js-LC45" class="blob-code blob-code-inner js-file-line">});</td>
+      </tr>
+</tbody></table>
+
+  </div>
+
+  </div>
+  
+</div>
+
+      </div>
+      <div class="gist-meta">
+        <a href="https://gist.github.com/MaximDubrovin/a6454b922901d0f97c60/raw/3d8208168a6e0bc5638047dbcd7813bdf70592fc/pub.album_edit.js" style="float:right">view raw</a>
+        <a href="https://gist.github.com/MaximDubrovin/a6454b922901d0f97c60#file-pub-album_edit-js">pub.album_edit.js</a>
+        hosted with ❤ by <a href="https://github.com/">GitHub</a>
+      </div>
+    </div>
+</div>
+<script>var height = -1; var delayMs = 200; function maybeResize() {if (document.documentElement.offsetHeight != height && parent && parent._resizeIframe) {parent._resizeIframe(window.frameElement); height = document.documentElement.offsetHeight;}delayMs = Math.min(delayMs * 2, 1000000); setTimeout(maybeResize, delayMs);}maybeResize();</script></body></html>

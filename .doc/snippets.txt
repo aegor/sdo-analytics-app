@@ -1,0 +1,31 @@
+Influx:
+
+show tag values from edx_webpages with key = traits_email where type = 'identify'
+SHOW SERIES FROM edx_webpages WHERE type = 'pages'
+
+Mongo:
+
+// Output only selected fields. 0 - don't, 1 - yes
+Metrics.find({}, {fields: {_id: 0, 'munitipality':1}}).fetch()
+
+//Find if field exists:
+Metrics.find({context_traits_municipality: {$exists: true}}, {fields: {sentAt:1, _id: 0, 'context_traits_municipality':1}}).fetch()
+
+// Check if Date
+db.metrics.find({sentAt: {$exists: true}},{_id: 0, sentAt:1}).forEach(function(f) { print (f.sentAt instanceof Date) } );
+db.metrics.find({sentAt: {$exists: true}},{_id: 0, sentAt:1}).forEach(function(f) { print (typeof f.sentAt) } );
+// string
+db.metrics.find({sentAt: {$type: 2}},{_id: 0, sentAt:1});
+// timestamp
+db.metrics.find({sentAt: {$type: 17}},{_id: 0, sentAt:1});
+// date
+db.metrics.find({sentAt: {$type: 9}},{_id: 0, sentAt:1});
+
+// integer timestamp from date
+a= new Date('2016-07-06T09:35:52.481Z').valueOf()
+
+
+--
+select value,context_traits_email,properties_email,event,type from edx_webpages where type = 'track'
+
+

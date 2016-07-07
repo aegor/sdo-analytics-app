@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<!-- saved from url=(0070)https://medium.com/media/17c439f35986d2d13edffcd1bb87c8f8?maxWidth=700 -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta name="twitter:widgets:csp" content="on"><meta name="robots" content="noindex"><!--<base target="_blank">--><base href="." target="_blank"><style>body {text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; font-family: "ff-tisa-web-pro", Georgia, Cambria, "Times New Roman", Times, serif; font-weight: 400; color: #333332; font-size: 18px; line-height: 1.4; margin: 0; background-color: white; overflow: hidden;}iframe {max-width: 100%;}</style><script type="text/javascript">try {
+window.AG_onLoad = function(func) { if (window.addEventListener) { window.addEventListener('DOMContentLoaded', func); } };
+window.AG_removeElementById = function(id) { var element = document.getElementById(id); if (element && element.parentNode) { element.parentNode.removeChild(element); }};
+window.AG_removeElementBySelector = function(selector) { if (!document.querySelectorAll) { return; } var nodes = document.querySelectorAll(selector); if (nodes) { for (var i = 0; i < nodes.length; i++) { if (nodes[i] && nodes[i].parentNode) { nodes[i].parentNode.removeChild(nodes[i]); } } } };
+window.AG_each = function(selector, fn) { if (!document.querySelectorAll) return; var elements = document.querySelectorAll(selector); for (var i = 0; i < elements.length; i++) { fn(elements[i]); }; };
+var AG_removeParent = function(el, fn) { while (el && el.parentNode) { if (fn(el)) { el.parentNode.removeChild(el); return; } el = el.parentNode; } };
+var AdFox_getCodeScript = function() {};
+AG_onLoad(function() { window.AG_each('iframe[id^="AdFox_iframe_"]', function(el) { if (el && el.parentNode) { el.parentNode.removeChild(el); } }); });
+try { Object.defineProperty(window, 'noAdsAtAll', { get: function() { return true; } }); } catch (ex) {}
+} catch (ex) { console.error('Error executing AG js: ' + ex); }</script></head><body><style>.gist .gist-file { margin-bottom: 0 !important; }.gist { text-rendering: auto; }</style><script src="./7455130589503b5bba5a.js" charset="utf-8"></script><link rel="stylesheet" href="./gist-embed-388b069d66e6d3bd1f07d4a206ef1fa31d50dffe23ee28e23708b8a25537af01.css"><div id="gist17674879" class="gist">
+    <div class="gist-file">
+      <div class="gist-data">
+        <div class="js-gist-file-update-container js-task-list-container file-box">
+  <div id="file-savealbumtitle-js" class="file">
+    
+
+  <div itemprop="text" class="blob-wrapper data type-javascript">
+      <table class="highlight tab-size js-file-line-container" data-tab-size="8">
+      <tbody><tr>
+        <td id="file-savealbumtitle-js-L1" class="blob-num js-line-number" data-line-number="1"></td>
+        <td id="file-savealbumtitle-js-LC1" class="blob-code blob-code-inner js-file-line"><span class="pl-en">saveAlbumTitle</span> <span class="pl-k">=</span> <span class="pl-k">function</span>()</td>
+      </tr>
+      <tr>
+        <td id="file-savealbumtitle-js-L2" class="blob-num js-line-number" data-line-number="2"></td>
+        <td id="file-savealbumtitle-js-LC2" class="blob-code blob-code-inner js-file-line">{</td>
+      </tr>
+      <tr>
+        <td id="file-savealbumtitle-js-L3" class="blob-num js-line-number" data-line-number="3"></td>
+        <td id="file-savealbumtitle-js-LC3" class="blob-code blob-code-inner js-file-line">	<span class="pl-k">if</span> (<span class="pl-k">!</span><span class="pl-smi">albumEditor</span>.<span class="pl-smi">albumId</span>)</td>
+      </tr>
+      <tr>
+        <td id="file-savealbumtitle-js-L4" class="blob-num js-line-number" data-line-number="4"></td>
+        <td id="file-savealbumtitle-js-LC4" class="blob-code blob-code-inner js-file-line">		<span class="pl-k">return</span>;</td>
+      </tr>
+      <tr>
+        <td id="file-savealbumtitle-js-L5" class="blob-num js-line-number" data-line-number="5"></td>
+        <td id="file-savealbumtitle-js-LC5" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="file-savealbumtitle-js-L6" class="blob-num js-line-number" data-line-number="6"></td>
+        <td id="file-savealbumtitle-js-LC6" class="blob-code blob-code-inner js-file-line">	<span class="pl-smi">Albums</span>.<span class="pl-en">update</span>(</td>
+      </tr>
+      <tr>
+        <td id="file-savealbumtitle-js-L7" class="blob-num js-line-number" data-line-number="7"></td>
+        <td id="file-savealbumtitle-js-LC7" class="blob-code blob-code-inner js-file-line">		{</td>
+      </tr>
+      <tr>
+        <td id="file-savealbumtitle-js-L8" class="blob-num js-line-number" data-line-number="8"></td>
+        <td id="file-savealbumtitle-js-LC8" class="blob-code blob-code-inner js-file-line">			_id<span class="pl-k">:</span> <span class="pl-smi">albumEditor</span>.<span class="pl-smi">albumId</span></td>
+      </tr>
+      <tr>
+        <td id="file-savealbumtitle-js-L9" class="blob-num js-line-number" data-line-number="9"></td>
+        <td id="file-savealbumtitle-js-LC9" class="blob-code blob-code-inner js-file-line">		},</td>
+      </tr>
+      <tr>
+        <td id="file-savealbumtitle-js-L10" class="blob-num js-line-number" data-line-number="10"></td>
+        <td id="file-savealbumtitle-js-LC10" class="blob-code blob-code-inner js-file-line">		{</td>
+      </tr>
+      <tr>
+        <td id="file-savealbumtitle-js-L11" class="blob-num js-line-number" data-line-number="11"></td>
+        <td id="file-savealbumtitle-js-LC11" class="blob-code blob-code-inner js-file-line">			$set<span class="pl-k">:</span> {</td>
+      </tr>
+      <tr>
+        <td id="file-savealbumtitle-js-L12" class="blob-num js-line-number" data-line-number="12"></td>
+        <td id="file-savealbumtitle-js-LC12" class="blob-code blob-code-inner js-file-line">				<span class="pl-s"><span class="pl-pds">'</span>title.unpublished<span class="pl-pds">'</span></span><span class="pl-k">:</span> <span class="pl-smi">albumTitleEditor</span>.<span class="pl-smi">$</span>.<span class="pl-smi">textarea</span>.<span class="pl-en">val</span>()</td>
+      </tr>
+      <tr>
+        <td id="file-savealbumtitle-js-L13" class="blob-num js-line-number" data-line-number="13"></td>
+        <td id="file-savealbumtitle-js-LC13" class="blob-code blob-code-inner js-file-line">			}</td>
+      </tr>
+      <tr>
+        <td id="file-savealbumtitle-js-L14" class="blob-num js-line-number" data-line-number="14"></td>
+        <td id="file-savealbumtitle-js-LC14" class="blob-code blob-code-inner js-file-line">		}</td>
+      </tr>
+      <tr>
+        <td id="file-savealbumtitle-js-L15" class="blob-num js-line-number" data-line-number="15"></td>
+        <td id="file-savealbumtitle-js-LC15" class="blob-code blob-code-inner js-file-line">	);</td>
+      </tr>
+      <tr>
+        <td id="file-savealbumtitle-js-L16" class="blob-num js-line-number" data-line-number="16"></td>
+        <td id="file-savealbumtitle-js-LC16" class="blob-code blob-code-inner js-file-line">};</td>
+      </tr>
+</tbody></table>
+
+  </div>
+
+  </div>
+  
+</div>
+
+      </div>
+      <div class="gist-meta">
+        <a href="https://gist.github.com/MaximDubrovin/7455130589503b5bba5a/raw/b704b32b5f90306ceb68dd581d40c50a73e8b460/saveAlbumTitle.js" style="float:right">view raw</a>
+        <a href="https://gist.github.com/MaximDubrovin/7455130589503b5bba5a#file-savealbumtitle-js">saveAlbumTitle.js</a>
+        hosted with ❤ by <a href="https://github.com/">GitHub</a>
+      </div>
+    </div>
+</div>
+<script>var height = -1; var delayMs = 200; function maybeResize() {if (document.documentElement.offsetHeight != height && parent && parent._resizeIframe) {parent._resizeIframe(window.frameElement); height = document.documentElement.offsetHeight;}delayMs = Math.min(delayMs * 2, 1000000); setTimeout(maybeResize, delayMs);}maybeResize();</script></body></html>

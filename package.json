@@ -1,0 +1,17 @@
+{
+  "name": "segment-server-meteor",
+  "private": true,
+  "scripts": {
+    "start": "meteor run"
+  },
+  "dependencies": {
+    "analytics.js": "^2.9.1",
+    "body-parser": "^1.15.2",
+    "connect-header": "0.0.5",
+    "dotize": "^0.1.26",
+    "elasticsearch": "^11.0.1",
+    "fibers": "^1.0.13",
+    "influx": "^4.2.0",
+    "meteor-node-stubs": "~0.2.0"
+  }
+}

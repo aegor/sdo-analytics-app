@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<!-- saved from url=(0070)https://medium.com/media/05b646b47c3217e53ec413891de28860?maxWidth=700 -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta name="twitter:widgets:csp" content="on"><meta name="robots" content="noindex"><!--<base target="_blank">--><base href="." target="_blank"><style>body {text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; font-family: "ff-tisa-web-pro", Georgia, Cambria, "Times New Roman", Times, serif; font-weight: 400; color: #333332; font-size: 18px; line-height: 1.4; margin: 0; background-color: white; overflow: hidden;}iframe {max-width: 100%;}</style><script type="text/javascript">try {
+window.AG_onLoad = function(func) { if (window.addEventListener) { window.addEventListener('DOMContentLoaded', func); } };
+window.AG_removeElementById = function(id) { var element = document.getElementById(id); if (element && element.parentNode) { element.parentNode.removeChild(element); }};
+window.AG_removeElementBySelector = function(selector) { if (!document.querySelectorAll) { return; } var nodes = document.querySelectorAll(selector); if (nodes) { for (var i = 0; i < nodes.length; i++) { if (nodes[i] && nodes[i].parentNode) { nodes[i].parentNode.removeChild(nodes[i]); } } } };
+window.AG_each = function(selector, fn) { if (!document.querySelectorAll) return; var elements = document.querySelectorAll(selector); for (var i = 0; i < elements.length; i++) { fn(elements[i]); }; };
+var AG_removeParent = function(el, fn) { while (el && el.parentNode) { if (fn(el)) { el.parentNode.removeChild(el); return; } el = el.parentNode; } };
+var AdFox_getCodeScript = function() {};
+AG_onLoad(function() { window.AG_each('iframe[id^="AdFox_iframe_"]', function(el) { if (el && el.parentNode) { el.parentNode.removeChild(el); } }); });
+try { Object.defineProperty(window, 'noAdsAtAll', { get: function() { return true; } }); } catch (ex) {}
+} catch (ex) { console.error('Error executing AG js: ' + ex); }</script></head><body><style>.gist .gist-file { margin-bottom: 0 !important; }.gist { text-rendering: auto; }</style><script src="./3d470dc77d271f69501b.js" charset="utf-8"></script><link rel="stylesheet" href="./gist-embed-388b069d66e6d3bd1f07d4a206ef1fa31d50dffe23ee28e23708b8a25537af01.css"><div id="gist17675407" class="gist">
+    <div class="gist-file">
+      <div class="gist-data">
+        <div class="js-gist-file-update-container js-task-list-container file-box">
+  <div id="file-publishalbum-js" class="file">
+    
+
+  <div itemprop="text" class="blob-wrapper data type-javascript">
+      <table class="highlight tab-size js-file-line-container" data-tab-size="8">
+      <tbody><tr>
+        <td id="file-publishalbum-js-L1" class="blob-num js-line-number" data-line-number="1"></td>
+        <td id="file-publishalbum-js-LC1" class="blob-code blob-code-inner js-file-line"><span class="pl-en">publishAlbum</span> <span class="pl-k">=</span> <span class="pl-k">function</span>()</td>
+      </tr>
+      <tr>
+        <td id="file-publishalbum-js-L2" class="blob-num js-line-number" data-line-number="2"></td>
+        <td id="file-publishalbum-js-LC2" class="blob-code blob-code-inner js-file-line">{</td>
+      </tr>
+      <tr>
+        <td id="file-publishalbum-js-L3" class="blob-num js-line-number" data-line-number="3"></td>
+        <td id="file-publishalbum-js-LC3" class="blob-code blob-code-inner js-file-line">	<span class="pl-c">// works for both: Publish and Publish changes</span></td>
+      </tr>
+      <tr>
+        <td id="file-publishalbum-js-L4" class="blob-num js-line-number" data-line-number="4"></td>
+        <td id="file-publishalbum-js-LC4" class="blob-code blob-code-inner js-file-line">	<span class="pl-c">// just syncs .unpublished fields contents to .published</span></td>
+      </tr>
+      <tr>
+        <td id="file-publishalbum-js-L5" class="blob-num js-line-number" data-line-number="5"></td>
+        <td id="file-publishalbum-js-LC5" class="blob-code blob-code-inner js-file-line">	<span class="pl-c">// and changes .published to true when needed</span></td>
+      </tr>
+      <tr>
+        <td id="file-publishalbum-js-L6" class="blob-num js-line-number" data-line-number="6"></td>
+        <td id="file-publishalbum-js-LC6" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="file-publishalbum-js-L7" class="blob-num js-line-number" data-line-number="7"></td>
+        <td id="file-publishalbum-js-LC7" class="blob-code blob-code-inner js-file-line">	<span class="pl-k">if</span> (<span class="pl-k">!</span><span class="pl-smi">albumEditor</span>.<span class="pl-smi">albumId</span>)</td>
+      </tr>
+      <tr>
+        <td id="file-publishalbum-js-L8" class="blob-num js-line-number" data-line-number="8"></td>
+        <td id="file-publishalbum-js-LC8" class="blob-code blob-code-inner js-file-line">		<span class="pl-k">return</span>;</td>
+      </tr>
+      <tr>
+        <td id="file-publishalbum-js-L9" class="blob-num js-line-number" data-line-number="9"></td>
+        <td id="file-publishalbum-js-LC9" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="file-publishalbum-js-L10" class="blob-num js-line-number" data-line-number="10"></td>
+        <td id="file-publishalbum-js-LC10" class="blob-code blob-code-inner js-file-line">	<span class="pl-c">// publish all unpublished items</span></td>
+      </tr>
+      <tr>
+        <td id="file-publishalbum-js-L11" class="blob-num js-line-number" data-line-number="11"></td>
+        <td id="file-publishalbum-js-LC11" class="blob-code blob-code-inner js-file-line">	<span class="pl-smi">Meteor</span>.<span class="pl-c1">call</span>(<span class="pl-s"><span class="pl-pds">'</span>publishAlbumItems<span class="pl-pds">'</span></span>, <span class="pl-smi">albumEditor</span>.<span class="pl-smi">albumId</span>);</td>
+      </tr>
+      <tr>
+        <td id="file-publishalbum-js-L12" class="blob-num js-line-number" data-line-number="12"></td>
+        <td id="file-publishalbum-js-LC12" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="file-publishalbum-js-L13" class="blob-num js-line-number" data-line-number="13"></td>
+        <td id="file-publishalbum-js-LC13" class="blob-code blob-code-inner js-file-line">	<span class="pl-c">// find album note</span></td>
+      </tr>
+      <tr>
+        <td id="file-publishalbum-js-L14" class="blob-num js-line-number" data-line-number="14"></td>
+        <td id="file-publishalbum-js-LC14" class="blob-code blob-code-inner js-file-line">	<span class="pl-k">var</span> albumNote_unpublishedFields <span class="pl-k">=</span> <span class="pl-smi">CC_AlbumNotes_unpublishedFields</span>.<span class="pl-en">findOne</span>(</td>
+      </tr>
+      <tr>
+        <td id="file-publishalbum-js-L15" class="blob-num js-line-number" data-line-number="15"></td>
+        <td id="file-publishalbum-js-LC15" class="blob-code blob-code-inner js-file-line">		{</td>
+      </tr>
+      <tr>
+        <td id="file-publishalbum-js-L16" class="blob-num js-line-number" data-line-number="16"></td>
+        <td id="file-publishalbum-js-LC16" class="blob-code blob-code-inner js-file-line">			_id<span class="pl-k">:</span> <span class="pl-smi">albumEditor</span>.<span class="pl-smi">albumNoteId</span></td>
+      </tr>
+      <tr>
+        <td id="file-publishalbum-js-L17" class="blob-num js-line-number" data-line-number="17"></td>
+        <td id="file-publishalbum-js-LC17" class="blob-code blob-code-inner js-file-line">		},</td>
+      </tr>
+      <tr>
+        <td id="file-publishalbum-js-L18" class="blob-num js-line-number" data-line-number="18"></td>
+        <td id="file-publishalbum-js-LC18" class="blob-code blob-code-inner js-file-line">		{</td>
+      </tr>
+      <tr>
+        <td id="file-publishalbum-js-L19" class="blob-num js-line-number" data-line-number="19"></td>
+        <td id="file-publishalbum-js-LC19" class="blob-code blob-code-inner js-file-line">			reactive<span class="pl-k">:</span> <span class="pl-c1">false</span></td>
+      </tr>
+      <tr>
+        <td id="file-publishalbum-js-L20" class="blob-num js-line-number" data-line-number="20"></td>
+        <td id="file-publishalbum-js-LC20" class="blob-code blob-code-inner js-file-line">		}</td>
+      </tr>
+      <tr>
+        <td id="file-publishalbum-js-L21" class="blob-num js-line-number" data-line-number="21"></td>
+        <td id="file-publishalbum-js-LC21" class="blob-code blob-code-inner js-file-line">	);</td>
+      </tr>
+      <tr>
+        <td id="file-publishalbum-js-L22" class="blob-num js-line-number" data-line-number="22"></td>
+        <td id="file-publishalbum-js-LC22" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="file-publishalbum-js-L23" class="blob-num js-line-number" data-line-number="23"></td>
+        <td id="file-publishalbum-js-LC23" class="blob-code blob-code-inner js-file-line">	<span class="pl-c">// publish album note</span></td>
+      </tr>
+      <tr>
+        <td id="file-publishalbum-js-L24" class="blob-num js-line-number" data-line-number="24"></td>
+        <td id="file-publishalbum-js-LC24" class="blob-code blob-code-inner js-file-line">	<span class="pl-smi">AlbumNotes</span>.<span class="pl-en">update</span>(</td>
+      </tr>
+      <tr>
+        <td id="file-publishalbum-js-L25" class="blob-num js-line-number" data-line-number="25"></td>
+        <td id="file-publishalbum-js-LC25" class="blob-code blob-code-inner js-file-line">		{</td>
+      </tr>
+      <tr>
+        <td id="file-publishalbum-js-L26" class="blob-num js-line-number" data-line-number="26"></td>
+        <td id="file-publishalbum-js-LC26" class="blob-code blob-code-inner js-file-line">			_id<span class="pl-k">:</span> <span class="pl-smi">albumEditor</span>.<span class="pl-smi">albumNoteId</span></td>
+      </tr>
+      <tr>
+        <td id="file-publishalbum-js-L27" class="blob-num js-line-number" data-line-number="27"></td>
+        <td id="file-publishalbum-js-LC27" class="blob-code blob-code-inner js-file-line">		},</td>
+      </tr>
+      <tr>
+        <td id="file-publishalbum-js-L28" class="blob-num js-line-number" data-line-number="28"></td>
+        <td id="file-publishalbum-js-LC28" class="blob-code blob-code-inner js-file-line">		{</td>
+      </tr>
+      <tr>
+        <td id="file-publishalbum-js-L29" class="blob-num js-line-number" data-line-number="29"></td>
+        <td id="file-publishalbum-js-LC29" class="blob-code blob-code-inner js-file-line">			$set<span class="pl-k">:</span> {</td>
+      </tr>
+      <tr>
+        <td id="file-publishalbum-js-L30" class="blob-num js-line-number" data-line-number="30"></td>
+        <td id="file-publishalbum-js-LC30" class="blob-code blob-code-inner js-file-line">				<span class="pl-s"><span class="pl-pds">'</span>sirtrevor.published<span class="pl-pds">'</span></span><span class="pl-k">:</span> <span class="pl-smi">albumNote_unpublishedFields</span>.<span class="pl-smi">sirtrevor</span> <span class="pl-k">&amp;&amp;</span> <span class="pl-smi">albumNote_unpublishedFields</span>.<span class="pl-smi">sirtrevor</span>.<span class="pl-smi">unpublished</span>,</td>
+      </tr>
+      <tr>
+        <td id="file-publishalbum-js-L31" class="blob-num js-line-number" data-line-number="31"></td>
+        <td id="file-publishalbum-js-LC31" class="blob-code blob-code-inner js-file-line">				published<span class="pl-k">:</span> <span class="pl-c1">true</span></td>
+      </tr>
+      <tr>
+        <td id="file-publishalbum-js-L32" class="blob-num js-line-number" data-line-number="32"></td>
+        <td id="file-publishalbum-js-LC32" class="blob-code blob-code-inner js-file-line">			}</td>
+      </tr>
+      <tr>
+        <td id="file-publishalbum-js-L33" class="blob-num js-line-number" data-line-number="33"></td>
+        <td id="file-publishalbum-js-LC33" class="blob-code blob-code-inner js-file-line">		}</td>
+      </tr>
+      <tr>
+        <td id="file-publishalbum-js-L34" class="blob-num js-line-number" data-line-number="34"></td>
+        <td id="file-publishalbum-js-LC34" class="blob-code blob-code-inner js-file-line">	);</td>
+      </tr>
+      <tr>
+        <td id="file-publishalbum-js-L35" class="blob-num js-line-number" data-line-number="35"></td>
+        <td id="file-publishalbum-js-LC35" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="file-publishalbum-js-L36" class="blob-num js-line-number" data-line-number="36"></td>
+        <td id="file-publishalbum-js-LC36" class="blob-code blob-code-inner js-file-line">	<span class="pl-c">// find album to get unpublished fields</span></td>
+      </tr>
+      <tr>
+        <td id="file-publishalbum-js-L37" class="blob-num js-line-number" data-line-number="37"></td>
+        <td id="file-publishalbum-js-LC37" class="blob-code blob-code-inner js-file-line">	<span class="pl-k">var</span> album_unpublishedFields <span class="pl-k">=</span> <span class="pl-smi">CC_Albums_unpublishedFields</span>.<span class="pl-en">findOne</span>(</td>
+      </tr>
+      <tr>
+        <td id="file-publishalbum-js-L38" class="blob-num js-line-number" data-line-number="38"></td>
+        <td id="file-publishalbum-js-LC38" class="blob-code blob-code-inner js-file-line">		{</td>
+      </tr>
+      <tr>
+        <td id="file-publishalbum-js-L39" class="blob-num js-line-number" data-line-number="39"></td>
+        <td id="file-publishalbum-js-LC39" class="blob-code blob-code-inner js-file-line">			_id<span class="pl-k">:</span> <span class="pl-smi">albumEditor</span>.<span class="pl-smi">albumId</span></td>
+      </tr>
+      <tr>
+        <td id="file-publishalbum-js-L40" class="blob-num js-line-number" data-line-number="40"></td>
+        <td id="file-publishalbum-js-LC40" class="blob-code blob-code-inner js-file-line">		},</td>
+      </tr>
+      <tr>
+        <td id="file-publishalbum-js-L41" class="blob-num js-line-number" data-line-number="41"></td>
+        <td id="file-publishalbum-js-LC41" class="blob-code blob-code-inner js-file-line">		{</td>
+      </tr>
+      <tr>
+        <td id="file-publishalbum-js-L42" class="blob-num js-line-number" data-line-number="42"></td>
+        <td id="file-publishalbum-js-LC42" class="blob-code blob-code-inner js-file-line">			reactive<span class="pl-k">:</span> <span class="pl-c1">false</span></td>
+      </tr>
+      <tr>
+        <td id="file-publishalbum-js-L43" class="blob-num js-line-number" data-line-number="43"></td>
+        <td id="file-publishalbum-js-LC43" class="blob-code blob-code-inner js-file-line">		}</td>
+      </tr>
+      <tr>
+        <td id="file-publishalbum-js-L44" class="blob-num js-line-number" data-line-number="44"></td>
+        <td id="file-publishalbum-js-LC44" class="blob-code blob-code-inner js-file-line">	);</td>
+      </tr>
+      <tr>
+        <td id="file-publishalbum-js-L45" class="blob-num js-line-number" data-line-number="45"></td>
+        <td id="file-publishalbum-js-LC45" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="file-publishalbum-js-L46" class="blob-num js-line-number" data-line-number="46"></td>
+        <td id="file-publishalbum-js-LC46" class="blob-code blob-code-inner js-file-line">	<span class="pl-k">var</span> album <span class="pl-k">=</span> <span class="pl-smi">Albums</span>.<span class="pl-en">findOne</span>(</td>
+      </tr>
+      <tr>
+        <td id="file-publishalbum-js-L47" class="blob-num js-line-number" data-line-number="47"></td>
+        <td id="file-publishalbum-js-LC47" class="blob-code blob-code-inner js-file-line">		{</td>
+      </tr>
+      <tr>
+        <td id="file-publishalbum-js-L48" class="blob-num js-line-number" data-line-number="48"></td>
+        <td id="file-publishalbum-js-LC48" class="blob-code blob-code-inner js-file-line">			_id<span class="pl-k">:</span> <span class="pl-smi">albumEditor</span>.<span class="pl-smi">albumId</span></td>
+      </tr>
+      <tr>
+        <td id="file-publishalbum-js-L49" class="blob-num js-line-number" data-line-number="49"></td>
+        <td id="file-publishalbum-js-LC49" class="blob-code blob-code-inner js-file-line">		},</td>
+      </tr>
+      <tr>
+        <td id="file-publishalbum-js-L50" class="blob-num js-line-number" data-line-number="50"></td>
+        <td id="file-publishalbum-js-LC50" class="blob-code blob-code-inner js-file-line">		{</td>
+      </tr>
+      <tr>
+        <td id="file-publishalbum-js-L51" class="blob-num js-line-number" data-line-number="51"></td>
+        <td id="file-publishalbum-js-LC51" class="blob-code blob-code-inner js-file-line">			reactive<span class="pl-k">:</span> <span class="pl-c1">false</span></td>
+      </tr>
+      <tr>
+        <td id="file-publishalbum-js-L52" class="blob-num js-line-number" data-line-number="52"></td>
+        <td id="file-publishalbum-js-LC52" class="blob-code blob-code-inner js-file-line">		}</td>
+      </tr>
+      <tr>
+        <td id="file-publishalbum-js-L53" class="blob-num js-line-number" data-line-number="53"></td>
+        <td id="file-publishalbum-js-LC53" class="blob-code blob-code-inner js-file-line">	);</td>
+      </tr>
+      <tr>
+        <td id="file-publishalbum-js-L54" class="blob-num js-line-number" data-line-number="54"></td>
+        <td id="file-publishalbum-js-LC54" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="file-publishalbum-js-L55" class="blob-num js-line-number" data-line-number="55"></td>
+        <td id="file-publishalbum-js-LC55" class="blob-code blob-code-inner js-file-line">	<span class="pl-k">if</span> (<span class="pl-smi">album</span>.<span class="pl-smi">published</span>)</td>
+      </tr>
+      <tr>
+        <td id="file-publishalbum-js-L56" class="blob-num js-line-number" data-line-number="56"></td>
+        <td id="file-publishalbum-js-LC56" class="blob-code blob-code-inner js-file-line">	{</td>
+      </tr>
+      <tr>
+        <td id="file-publishalbum-js-L57" class="blob-num js-line-number" data-line-number="57"></td>
+        <td id="file-publishalbum-js-LC57" class="blob-code blob-code-inner js-file-line">		<span class="pl-c">// publish changes</span></td>
+      </tr>
+      <tr>
+        <td id="file-publishalbum-js-L58" class="blob-num js-line-number" data-line-number="58"></td>
+        <td id="file-publishalbum-js-LC58" class="blob-code blob-code-inner js-file-line">		<span class="pl-smi">Albums</span>.<span class="pl-en">update</span>(</td>
+      </tr>
+      <tr>
+        <td id="file-publishalbum-js-L59" class="blob-num js-line-number" data-line-number="59"></td>
+        <td id="file-publishalbum-js-LC59" class="blob-code blob-code-inner js-file-line">			{</td>
+      </tr>
+      <tr>
+        <td id="file-publishalbum-js-L60" class="blob-num js-line-number" data-line-number="60"></td>
+        <td id="file-publishalbum-js-LC60" class="blob-code blob-code-inner js-file-line">				_id<span class="pl-k">:</span> <span class="pl-smi">albumEditor</span>.<span class="pl-smi">albumId</span></td>
+      </tr>
+      <tr>
+        <td id="file-publishalbum-js-L61" class="blob-num js-line-number" data-line-number="61"></td>
+        <td id="file-publishalbum-js-LC61" class="blob-code blob-code-inner js-file-line">			},</td>
+      </tr>
+      <tr>
+        <td id="file-publishalbum-js-L62" class="blob-num js-line-number" data-line-number="62"></td>
+        <td id="file-publishalbum-js-LC62" class="blob-code blob-code-inner js-file-line">			{</td>
+      </tr>
+      <tr>
+        <td id="file-publishalbum-js-L63" class="blob-num js-line-number" data-line-number="63"></td>
+        <td id="file-publishalbum-js-LC63" class="blob-code blob-code-inner js-file-line">				$set<span class="pl-k">:</span> {</td>
+      </tr>
+      <tr>
+        <td id="file-publishalbum-js-L64" class="blob-num js-line-number" data-line-number="64"></td>
+        <td id="file-publishalbum-js-LC64" class="blob-code blob-code-inner js-file-line">					<span class="pl-s"><span class="pl-pds">'</span>title.published<span class="pl-pds">'</span></span><span class="pl-k">:</span> <span class="pl-smi">album_unpublishedFields</span>.<span class="pl-c1">title</span> <span class="pl-k">&amp;&amp;</span> <span class="pl-smi">album_unpublishedFields</span>.<span class="pl-c1">title</span>.<span class="pl-smi">unpublished</span>,</td>
+      </tr>
+      <tr>
+        <td id="file-publishalbum-js-L65" class="blob-num js-line-number" data-line-number="65"></td>
+        <td id="file-publishalbum-js-LC65" class="blob-code blob-code-inner js-file-line">					<span class="pl-s"><span class="pl-pds">'</span>slug.published<span class="pl-pds">'</span></span><span class="pl-k">:</span> <span class="pl-smi">album_unpublishedFields</span>.<span class="pl-smi">slug</span> <span class="pl-k">&amp;&amp;</span> <span class="pl-smi">album_unpublishedFields</span>.<span class="pl-smi">slug</span>.<span class="pl-smi">unpublished</span></td>
+      </tr>
+      <tr>
+        <td id="file-publishalbum-js-L66" class="blob-num js-line-number" data-line-number="66"></td>
+        <td id="file-publishalbum-js-LC66" class="blob-code blob-code-inner js-file-line">				}</td>
+      </tr>
+      <tr>
+        <td id="file-publishalbum-js-L67" class="blob-num js-line-number" data-line-number="67"></td>
+        <td id="file-publishalbum-js-LC67" class="blob-code blob-code-inner js-file-line">			}</td>
+      </tr>
+      <tr>
+        <td id="file-publishalbum-js-L68" class="blob-num js-line-number" data-line-number="68"></td>
+        <td id="file-publishalbum-js-LC68" class="blob-code blob-code-inner js-file-line">		);</td>
+      </tr>
+      <tr>
+        <td id="file-publishalbum-js-L69" class="blob-num js-line-number" data-line-number="69"></td>
+        <td id="file-publishalbum-js-LC69" class="blob-code blob-code-inner js-file-line">	}</td>
+      </tr>
+      <tr>
+        <td id="file-publishalbum-js-L70" class="blob-num js-line-number" data-line-number="70"></td>
+        <td id="file-publishalbum-js-LC70" class="blob-code blob-code-inner js-file-line">	<span class="pl-k">else</span></td>
+      </tr>
+      <tr>
+        <td id="file-publishalbum-js-L71" class="blob-num js-line-number" data-line-number="71"></td>
+        <td id="file-publishalbum-js-LC71" class="blob-code blob-code-inner js-file-line">	{</td>
+      </tr>
+      <tr>
+        <td id="file-publishalbum-js-L72" class="blob-num js-line-number" data-line-number="72"></td>
+        <td id="file-publishalbum-js-LC72" class="blob-code blob-code-inner js-file-line">		<span class="pl-c">// publish unpublished album</span></td>
+      </tr>
+      <tr>
+        <td id="file-publishalbum-js-L73" class="blob-num js-line-number" data-line-number="73"></td>
+        <td id="file-publishalbum-js-LC73" class="blob-code blob-code-inner js-file-line">		<span class="pl-smi">Albums</span>.<span class="pl-en">update</span>(</td>
+      </tr>
+      <tr>
+        <td id="file-publishalbum-js-L74" class="blob-num js-line-number" data-line-number="74"></td>
+        <td id="file-publishalbum-js-LC74" class="blob-code blob-code-inner js-file-line">			{</td>
+      </tr>
+      <tr>
+        <td id="file-publishalbum-js-L75" class="blob-num js-line-number" data-line-number="75"></td>
+        <td id="file-publishalbum-js-LC75" class="blob-code blob-code-inner js-file-line">				_id<span class="pl-k">:</span> <span class="pl-smi">albumEditor</span>.<span class="pl-smi">albumId</span></td>
+      </tr>
+      <tr>
+        <td id="file-publishalbum-js-L76" class="blob-num js-line-number" data-line-number="76"></td>
+        <td id="file-publishalbum-js-LC76" class="blob-code blob-code-inner js-file-line">			},</td>
+      </tr>
+      <tr>
+        <td id="file-publishalbum-js-L77" class="blob-num js-line-number" data-line-number="77"></td>
+        <td id="file-publishalbum-js-LC77" class="blob-code blob-code-inner js-file-line">			{</td>
+      </tr>
+      <tr>
+        <td id="file-publishalbum-js-L78" class="blob-num js-line-number" data-line-number="78"></td>
+        <td id="file-publishalbum-js-LC78" class="blob-code blob-code-inner js-file-line">				$set<span class="pl-k">:</span> {</td>
+      </tr>
+      <tr>
+        <td id="file-publishalbum-js-L79" class="blob-num js-line-number" data-line-number="79"></td>
+        <td id="file-publishalbum-js-LC79" class="blob-code blob-code-inner js-file-line">					published<span class="pl-k">:</span> <span class="pl-c1">true</span>,</td>
+      </tr>
+      <tr>
+        <td id="file-publishalbum-js-L80" class="blob-num js-line-number" data-line-number="80"></td>
+        <td id="file-publishalbum-js-LC80" class="blob-code blob-code-inner js-file-line">					<span class="pl-c">// 1 based order</span></td>
+      </tr>
+      <tr>
+        <td id="file-publishalbum-js-L81" class="blob-num js-line-number" data-line-number="81"></td>
+        <td id="file-publishalbum-js-LC81" class="blob-code blob-code-inner js-file-line">					order<span class="pl-k">:</span> <span class="pl-smi">albumEditor</span>.<span class="pl-smi">publishedAlbumsCount</span> <span class="pl-k">+</span> <span class="pl-c1">1</span>,</td>
+      </tr>
+      <tr>
+        <td id="file-publishalbum-js-L82" class="blob-num js-line-number" data-line-number="82"></td>
+        <td id="file-publishalbum-js-LC82" class="blob-code blob-code-inner js-file-line">					<span class="pl-s"><span class="pl-pds">'</span>title.published<span class="pl-pds">'</span></span><span class="pl-k">:</span> <span class="pl-smi">album_unpublishedFields</span>.<span class="pl-c1">title</span> <span class="pl-k">&amp;&amp;</span> <span class="pl-smi">album_unpublishedFields</span>.<span class="pl-c1">title</span>.<span class="pl-smi">unpublished</span>,</td>
+      </tr>
+      <tr>
+        <td id="file-publishalbum-js-L83" class="blob-num js-line-number" data-line-number="83"></td>
+        <td id="file-publishalbum-js-LC83" class="blob-code blob-code-inner js-file-line">					<span class="pl-s"><span class="pl-pds">'</span>slug.published<span class="pl-pds">'</span></span><span class="pl-k">:</span> <span class="pl-smi">album_unpublishedFields</span>.<span class="pl-smi">slug</span> <span class="pl-k">&amp;&amp;</span> <span class="pl-smi">album_unpublishedFields</span>.<span class="pl-smi">slug</span>.<span class="pl-smi">unpublished</span></td>
+      </tr>
+      <tr>
+        <td id="file-publishalbum-js-L84" class="blob-num js-line-number" data-line-number="84"></td>
+        <td id="file-publishalbum-js-LC84" class="blob-code blob-code-inner js-file-line">				}</td>
+      </tr>
+      <tr>
+        <td id="file-publishalbum-js-L85" class="blob-num js-line-number" data-line-number="85"></td>
+        <td id="file-publishalbum-js-LC85" class="blob-code blob-code-inner js-file-line">			}</td>
+      </tr>
+      <tr>
+        <td id="file-publishalbum-js-L86" class="blob-num js-line-number" data-line-number="86"></td>
+        <td id="file-publishalbum-js-LC86" class="blob-code blob-code-inner js-file-line">		);</td>
+      </tr>
+      <tr>
+        <td id="file-publishalbum-js-L87" class="blob-num js-line-number" data-line-number="87"></td>
+        <td id="file-publishalbum-js-LC87" class="blob-code blob-code-inner js-file-line">	}</td>
+      </tr>
+      <tr>
+        <td id="file-publishalbum-js-L88" class="blob-num js-line-number" data-line-number="88"></td>
+        <td id="file-publishalbum-js-LC88" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="file-publishalbum-js-L89" class="blob-num js-line-number" data-line-number="89"></td>
+        <td id="file-publishalbum-js-LC89" class="blob-code blob-code-inner js-file-line">};</td>
+      </tr>
+</tbody></table>
+
+  </div>
+
+  </div>
+  
+</div>
+
+      </div>
+      <div class="gist-meta">
+        <a href="https://gist.github.com/MaximDubrovin/3d470dc77d271f69501b/raw/85e024b584d8a4894d4dc06b9d997cba347ae2e2/publishAlbum.js" style="float:right">view raw</a>
+        <a href="https://gist.github.com/MaximDubrovin/3d470dc77d271f69501b#file-publishalbum-js">publishAlbum.js</a>
+        hosted with ❤ by <a href="https://github.com/">GitHub</a>
+      </div>
+    </div>
+</div>
+<script>var height = -1; var delayMs = 200; function maybeResize() {if (document.documentElement.offsetHeight != height && parent && parent._resizeIframe) {parent._resizeIframe(window.frameElement); height = document.documentElement.offsetHeight;}delayMs = Math.min(delayMs * 2, 1000000); setTimeout(maybeResize, delayMs);}maybeResize();</script></body></html>

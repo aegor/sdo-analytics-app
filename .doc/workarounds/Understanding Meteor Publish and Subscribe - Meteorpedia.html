@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<!-- saved from url=(0074)http://www.meteorpedia.com/read/Understanding_Meteor_Publish_and_Subscribe -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" href="./Understanding Meteor Publish and Subscribe - Meteorpedia_files/d06273ae1b13192297c5bdff310d97e7a4bb03ae.css">
+
+
+<script type="text/javascript">__meteor_runtime_config__ = {"meteorRelease":"0.7.2","PUBLIC_SETTINGS":{},"ROOT_URL":"http://meteorpedia.com","ROOT_URL_PATH_PREFIX":"","autoupdateVersion":"fa2d818ca4f63ccd817a1f6b6e951e267060c078"};</script><script type="text/javascript">try {
+window.AG_onLoad = function(func) { if (window.addEventListener) { window.addEventListener('DOMContentLoaded', func); } };
+window.AG_removeElementById = function(id) { var element = document.getElementById(id); if (element && element.parentNode) { element.parentNode.removeChild(element); }};
+window.AG_removeElementBySelector = function(selector) { if (!document.querySelectorAll) { return; } var nodes = document.querySelectorAll(selector); if (nodes) { for (var i = 0; i < nodes.length; i++) { if (nodes[i] && nodes[i].parentNode) { nodes[i].parentNode.removeChild(nodes[i]); } } } };
+window.AG_each = function(selector, fn) { if (!document.querySelectorAll) return; var elements = document.querySelectorAll(selector); for (var i = 0; i < elements.length; i++) { fn(elements[i]); }; };
+var AG_removeParent = function(el, fn) { while (el && el.parentNode) { if (fn(el)) { el.parentNode.removeChild(el); return; } el = el.parentNode; } };
+var AdFox_getCodeScript = function() {};
+AG_onLoad(function() { window.AG_each('iframe[id^="AdFox_iframe_"]', function(el) { if (el && el.parentNode) { el.parentNode.removeChild(el); } }); });
+try { Object.defineProperty(window, 'noAdsAtAll', { get: function() { return true; } }); } catch (ex) {}
+} catch (ex) { console.error('Error executing AG js: ' + ex); }</script>
+
+  <script type="text/javascript" src="./Understanding Meteor Publish and Subscribe - Meteorpedia_files/c32992834527a8180080944a73a6310f787a3fe8.js"></script><title>Understanding Meteor Publish and Subscribe - Meteorpedia</title>
+
+
+<script type="text/javascript">
+if (typeof Package === 'undefined' || 
+    ! Package.webapp || 
+    ! Package.webapp.WebApp || 
+    ! Package.webapp.WebApp._isCssLoaded()) 
+  document.location.reload(); 
+</script>
+
+<meta name="fragment" content="!">
+<meta name="google-site-verification" content="yabvTcq0gqVmrKKqInYH94n11J9yvRy51fW8gxi8Hvc">
+<style id="clearly_highlighting_css" type="text/css">/* selection */ html.clearly_highlighting_enabled ::-moz-selection { background: rgba(246, 238, 150, 0.99); } html.clearly_highlighting_enabled ::selection { background: rgba(246, 238, 150, 0.99); } /* cursor */ html.clearly_highlighting_enabled {    /* cursor and hot-spot position -- requires a default cursor, after the URL one */    cursor: url("chrome-extension://phmkpljilkopjoacakielhagnbbmdmgn/clearly/images/highlight--cursor.png") 14 16, text; } /* highlight tag */ em.clearly_highlight_element {    font-style: inherit !important; font-weight: inherit !important;    background-image: url("chrome-extension://phmkpljilkopjoacakielhagnbbmdmgn/clearly/images/highlight--yellow.png");    background-repeat: repeat-x; background-position: top left; background-size: 100% 100%; } /* the delete-buttons are positioned relative to this */ em.clearly_highlight_element.clearly_highlight_first { position: relative; } /* delete buttons */ em.clearly_highlight_element a.clearly_highlight_delete_element {    display: none; cursor: pointer;    padding: 0; margin: 0; line-height: 0;    position: absolute; width: 34px; height: 34px; left: -17px; top: -17px;    background-image: url("chrome-extension://phmkpljilkopjoacakielhagnbbmdmgn/clearly/images/highlight--delete-sprite.png"); background-repeat: no-repeat; background-position: 0px 0px; } em.clearly_highlight_element a.clearly_highlight_delete_element:hover { background-position: -34px 0px; } /* retina */ @media (min--moz-device-pixel-ratio: 2), (-webkit-min-device-pixel-ratio: 2), (min-device-pixel-ratio: 2) {    em.clearly_highlight_element { background-image: url("chrome-extension://phmkpljilkopjoacakielhagnbbmdmgn/clearly/images/highlight--yellow@2x.png"); }    em.clearly_highlight_element a.clearly_highlight_delete_element { background-image: url("chrome-extension://phmkpljilkopjoacakielhagnbbmdmgn/clearly/images/highlight--delete-sprite@2x.png"); background-size: 68px 34px; } } </style><style>[touch-action="none"]{ -ms-touch-action: none; touch-action: none; }[touch-action="pan-x"]{ -ms-touch-action: pan-x; touch-action: pan-x; }[touch-action="pan-y"]{ -ms-touch-action: pan-y; touch-action: pan-y; }[touch-action="scroll"],[touch-action="pan-x pan-y"],[touch-action="pan-y pan-x"]{ -ms-touch-action: pan-x pan-y; touch-action: pan-x pan-y; }</style></head>
+<body>
+
+
+
+<!--empty-->
+  <!--empty-->
+  <!--empty-->
+  <!--empty-->
+
+  <!-- if we're not showing a dropdown, we need some other place to show messages -->
+  <!--empty--><div class="header">
+    <div class="navbar navbar-inverse navbar-static-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="http://www.meteorpedia.com/">Meteorpedia</a>
+          <div class="pull-right">
+            <ul class="nav page-menu"><li><span id="searchWrap"><input type="text" id="searchBar"><i class="icon-search"></i><span>✗</span></span></li>
+    
+    
+      <li class="active">
+      <a data-link="read" data-name="Understanding_Meteor_Publish_and_Subscribe" class="internal-link" href="http://www.meteorpedia.com/read/Understanding_Meteor_Publish_and_Subscribe">Read</a>
+      </li>
+      <li class="">
+      <a data-link="history" data-name="Understanding_Meteor_Publish_and_Subscribe" class="internal-link" href="http://www.meteorpedia.com/history/Understanding_Meteor_Publish_and_Subscribe">History</a>
+      </li>
+      <li class="">
+      <a data-link="edit" data-name="Understanding_Meteor_Publish_and_Subscribe" class="internal-link" href="http://www.meteorpedia.com/edit/Understanding_Meteor_Publish_and_Subscribe">Edit</a>
+      </li>
+      <li class="">
+      <a data-link="talk" data-name="Understanding_Meteor_Publish_and_Subscribe" class="internal-link" href="http://www.meteorpedia.com/talk/Understanding_Meteor_Publish_and_Subscribe">Discuss</a>
+      </li>
+    
+    
+    <li class="">
+    <a data-link="edit-profile" class="edit-profile-link" href="http://www.meteorpedia.com/edit_profile">Profile</a>
+    </li>
+    <li id="special-li"><a data-link="special" data-name="" class="internal-link" href="http://www.meteorpedia.com/special/">Special</a></li><li class="divider-vertical"></li>
+    <li>
+          <div id="login-buttons" class="login-buttons-dropdown-align-left">
+    
+       
+    
+       
+        <div class="login-link-and-dropdown-list login-form-sign-in">
+    
+      
+        <a class="login-link-text" id="login-sign-in-link">Sign in ▾</a>
+      
+    
+  </div>
+      
+    
+  
+    
+  </div>
+    </li>
+</ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="main" class="container">
+    <div class="row">
+
+    
+    
+      <div class="span3">
+        <div class="readSideBar">
+
+          <br>
+          <p><b>Primary Content</b></p>
+
+          <p>
+          
+            <div class="catOpen">[<b>+</b>]
+	Design Patterns</div>
+	
+          
+            <div class="catOpen">[<b>+</b>]
+	Deployment</div>
+	
+          
+            <div class="catOpen">[<b>+</b>]
+	Development</div>
+	
+          
+            <div class="catOpen">[<b>+</b>]
+	People</div>
+	
+          
+          </p>
+
+          <p><b>Top Pages</b> (views)</p>
+  <ul>
+    
+      <li><a class="internal-link" data-link="read" data-name="REST_API" href="http://www.meteorpedia.com/read/REST_API">REST API</a> (89996)</li>
+    
+      <li><a class="internal-link" data-link="read" data-name="Main_Page" href="http://www.meteorpedia.com/read/Main_Page">Main Page</a> (89536)</li>
+    
+      <li><a class="internal-link" data-link="read" data-name="DDP_Clients" href="http://www.meteorpedia.com/read/DDP_Clients">DDP Clients</a> (67656)</li>
+    
+      <li><a class="internal-link" data-link="read" data-name="Why_Meteor" href="http://www.meteorpedia.com/read/Why_Meteor">Why Meteor</a> (60001)</li>
+    
+      <li><a class="internal-link" data-link="read" data-name="Understanding_Meteor_Publish_and_Subscribe" href="http://www.meteorpedia.com/read/Understanding_Meteor_Publish_and_Subscribe">Understanding Meteor Publish and Subscribe</a> (44709)</li>
+    
+      <li><a class="internal-link" data-link="read" data-name="Environment_Variables" href="http://www.meteorpedia.com/read/Environment_Variables">Environment Variables</a> (42941)</li>
+    
+      <li><a class="internal-link" data-link="read" data-name="Blaze_Notes" href="http://www.meteorpedia.com/read/Blaze_Notes">Blaze Notes</a> (32511)</li>
+    
+      <li><a class="internal-link" data-link="read" data-name="Tutorials" href="http://www.meteorpedia.com/read/Tutorials">Tutorials</a> (25784)</li>
+    
+      <li><a class="internal-link" data-link="read" data-name="Infinite_Scrolling" href="http://www.meteorpedia.com/read/Infinite_Scrolling">Infinite Scrolling</a> (22997)</li>
+    
+      <li><a class="internal-link" data-link="read" data-name="Mobile_support" href="http://www.meteorpedia.com/read/Mobile_support">Mobile support</a> (18355)</li>
+    
+  </ul>
+
+          <br>
+          <p>This sidebar is a work-in-progress.</p>
+        </div>
+      </div>
+
+      <div class="span9">
+        
+    <h1>Understanding Meteor Publish and Subscribe</h1>
+    
+      
+        
+          <p><strong>NOTE</strong> The most up-to-date version of this question can be found at <a href="https://stackoverflow.com/questions/19826804/understanding-meteor-publish-subscribe/21853298#21853298" class="external">this StackOverflow answer</a>.</p>
+<hr>
+<p>Collections, publications and subscriptions are a tricky area of Meteor, that the documentation could discuss in more detail, so as to avoid <a href="https://www.discovermeteor.com/blog/understanding-meteor-publications-and-subscriptions/" class="external">frequent</a> <a href="http://stackoverflow.com/questions/12632452/publishing-subscribing-multiple-subsets-of-the-same-server-collection" class="external">confusion</a>, which sometimes get amplified by <a href="http://stackoverflow.com/questions/21851044/mongodb-what-are-the-differences-between-documents-records-and-attributes" class="external">confusing terminology</a>.</p>
+<p>Here's <a href="https://twitter.com/SachaGreif" class="external">Sacha Greif</a> (co-author of <a href="https://www.discovermeteor.com/" class="external">DiscoverMeteor</a>) explaining publications and subscriptions in one slide:</p>
+<p><img src="./Understanding Meteor Publish and Subscribe - Meteorpedia_files/Lcc23.jpg" alt="enter image description here"></p>
+<p>To properly understand why you need to call <code>find()</code> more than once, you need to understand how collections, publications and subscriptions work in in Meteor:</p>
+<ol>
+<li><p>You define collections in MongoDB. No Meteor involved yet. These collections contain <strong><a href="http://docs.mongodb.org/manual/core/document/" class="external">database records</a></strong> (also called "documents" by both Mongo <a href="https://github.com/meteor/meteor/blob/47cb93671997031790ede24fc28a8c191e706ad9/docs/client/api.html#L579" class="external">and Meteor</a>, but a "document" is more general than a database record; for instance, an update specification or a query selector are documents <a href="http://docs.mongodb.org/manual/core/document/" class="external">too</a> - JavaScript objects containing <code>field: value</code> pairs).</p>
+</li>
+<li><p>Then you define <a href="http://docs.meteor.com/#collections" class="external">collections</a> <em>on the Meteor server</em> with</p>
+ <!-- language: lang-js -->
+
+<pre><code> MyCollection = new Mongo.Collection('collection-name-in-mongo')</code></pre>
+<p>These collections contain <strong>all</strong> the data from the MongoDB collections, and you can run <code>MyCollection.find({...})</code> on them, which will return a <strong><a href="http://docs.meteor.com/#meteor_collection_cursor" class="external">cursor</a></strong> (a set of records, with methods to iterate through them and return them).</p>
+</li>
+<li><p>This cursor is (most of the time) used to <strong><a href="http://docs.meteor.com/#meteor_publish" class="external">publish</a></strong> (send) a set of records (called a <strong>"record set"</strong>). You can optionally publish only <em><a href="http://docs.meteor.com/#fieldspecifiers" class="external">some</a></em> fields from those records. It is record sets (<em>not</em> collections) that clients <strong><a href="http://docs.meteor.com/#meteor_subscribe" class="external">subscribe</a></strong> to. Publishing is done by a <a href="http://docs.meteor.com/#dataandsecurity" class="external">publish function</a>, which is run every time a new client subscribes, and which can take parameters to manage which records to return (e.g. a user id, to return only that user's documents).</p>
+</li>
+<li><p><em>On the client</em>, you have <a href="https://www.quora.com/Meteor-web-framework/How-does-Meteors-Minimongo-work" class="external">Minimongo</a> collections that <em>partially</em> mirror <em>some</em> of the records from the server. "Partially" because they may contain only some of the fields, and "some of the records" because you usually want to send to the client only the records it needs, to speed up page load, and only those it needs <em>and</em> has permission to access.</p>
+<blockquote>
+<p>Minimongo is essentially an in-memory, non-persistent implementation of Mongo in pure JavaScript. It serves as a local cache that stores just the subset of the database that this client is working with. Queries on the client (find) are served directly out of this cache, without talking to the server.</p>
+</blockquote>
+<p>These Minimongo collections are initially empty. They are filled by</p>
+ <!-- language: lang-js -->
+
+<pre><code> Meteor.subscribe('record-set-name')</code></pre>
+<p>calls. Note that the parameter to <a href="http://docs.meteor.com/#meteor_subscribe" class="external">subscribe</a> isn't a collection name; it's the name of a <em>record set</em> that the server used in the <code>publish</code> call. The <code>subscribe()</code> call subscribes the client to a <em>record set</em> - a subset of records from the server collection (e.g. most recent 100 blog posts), with all or a subset of the fields in each record (e.g. only <code>title</code> and <code>date</code>). How does Minimongo know into which collection to place the incoming records? The name of the collection will be the <code>collection</code> argument used in the publish handler's <code>added</code>, <code>changed</code>, and <code>removed</code> callbacks, or if those are missing (which is the case most of the time), it will be the name of the MongoDB collection on the server.</p>
+</li>
+</ol>
+<h3 id="modifying-records">Modifying records</h3>
+<p>This is where Meteor makes things very convenient: when you modify a record (document) in the Minimongo collection on the client, Meteor will instantly update all templates that depend on it, and will also send the changes back to the server, which in turn will store the changes in MongoDB and will send them to the appropriate clients that have subscribed to a record set including that document. This is called <strong>latency compensation</strong> and is one of the <a href="http://docs.meteor.com/#sevenprinciples" class="external">seven core principles of Meteor</a>.</p>
+<h2 id="multiple-subscriptions">Multiple subscriptions</h2>
+<p> You can have a bunch of subscriptions that pull in different records, but they'll all end up in the same collection on the client if the came from the same collection on the server, based on their <code>_id</code>. This is not explained clearly, but implied by the Meteor docs:</p>
+<blockquote>
+<p>When you subscribe to a record set, it tells the server to send records to the client. The client stores these records in local Minimongo collections, with the same name as the <code>collection</code> argument used in the publish handler's <code>added</code>, <code>changed</code>, and <code>removed</code> callbacks. Meteor will queue incoming attributes until you declare the Mongo.Collection on the client with the matching collection name.</p>
+</blockquote>
+<p> What's not explained is what happens when you <em>don't</em> explicitly use <code>added</code>, <code>changed</code> and <code>removed</code>, or publish handlers at all - which is most of the time. In this most common case, the collection argument is (unsurprisingly) taken from the name of the MongoDB collection you declared on the server at step 1. But what this means is that you can have different publications and subscriptions with different names, and all the records will end up in the same collection on the client. Down to the level of fields, Meteor takes care to perform a set union among documents, such that subscriptions can overlap - publish function that ship different fields to the client work side by side and on the client, the document in the collection will be the <a href="http://stackoverflow.com/a/14075008/1269037" class="external">union of the two sets of fields</a>.</p>
+<h2 id="example-multiple-subscriptions-filling-the-same-collection-on-the-client">Example: multiple subscriptions filling the same collection on the client</h2>
+<p>You have a BlogPosts collection, which you declare the same way on both the server and the client, even though it does different things:</p>
+<!-- language: lang-js -->
+
+<pre><code>BlogPosts = new Mongo.Collection('posts');</code></pre>
+<p>On the client, <code>BlogPosts</code> can get records from:</p>
+<ol>
+<li><p>a subscription to the most recent 10 blog posts</p>
+ <!-- language: lang-js -->
+
+<pre><code> // server
+ Meteor.publish('posts-recent', function publishFunction() {
+   return BlogPosts.find({}, {sort: {date: -1}, limit: 10});
+ }
+ // client
+ Meteor.subscribe('posts-recent');</code></pre>
+</li>
+<li><p>a subscription to the current user's posts</p>
+ <!-- language: lang-js -->
+
+<pre><code> // server
+ Meteor.publish('posts-current-user', function publishFunction() {
+   return BlogPosts.find({author: this.userId}, {sort: {date: -1}, limit: 10});
+   // this.userId is provided by Meteor - http://docs.meteor.com/#publish_userId
+ }
+ Meteor.publish('posts-by-user', function publishFunction(who) {
+   return BlogPosts.find({authorId: who._id}, {sort: {date: -1}, limit: 10});
+ }
+
+ // client
+ Meteor.subscribe('posts-current-user');
+ Meteor.subscribe('posts-by-user', someUser);</code></pre>
+</li>
+<li><p>a subscription to the most popular posts</p>
+</li>
+<li>etc.</li>
+</ol>
+<p>All these documents come from the <code>posts</code> collection in MongoDB, via the <code>BlogPosts</code> collection on the server, and end up in the <code>BlogPosts</code> collection on the client.</p>
+<p>Now we can understand why you need to call <code>find()</code> more than once - the second time being on the client, because documents from all subscriptions will end up in the same collection, and you need to fetch only those you care about. For example, to get the most recent posts on the client, you simply mirror the query from the server:</p>
+<!-- language: lang-js -->
+
+<pre><code>var recentPosts = BlogPosts.find({}, {sort: {date: -1}, limit: 10});</code></pre>
+<p>This will return a cursor of all documents/records that the client has received so far, both the top posts and the user's posts.</p>
+<p>-- source: <a class="internal-link" data-link="read" data-name="Dan_Dascalescu" href="http://www.meteorpedia.com/read/Dan_Dascalescu">Dan Dascalescu</a> on <a href="http://stackoverflow.com/questions/19826804/understanding-meteor-publish-subscribe/21853298#21853298" class="external">StackOverflow</a></p>
+<div class="catlinks">Toolbar: <ul><li><a class="special-link" data-name="WhatLinksHere" data-option="Understanding_Meteor_Publish_and_Subscribe" href="http://www.meteorpedia.com/special/WhatLinksHere/Understanding_Meteor_Publish_and_Subscribe">WhatLinksHere</a></li></ul></div>
+        
+      
+    
+  
+      </div>
+
+    
+  </div>
+ </div>
+  <div id="footer" class="well muted">
+    <div class="container">
+        <ul class="nav footer-nav">
+          <li>Meteorpedia is Open Source Software and not affiliated with Meteor.</li>
+          <li><a href="https://github.com/meteorpedia/wiki">Source on GitHub</a></li>
+          <li>All content is published via the <a target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-ShareAlike License</a></li>
+        </ul>
+      </div>
+    </div>
+  <style type="text/css">
+    #main-loading.load-hidden {
+      z-Index: -1000;
+    }
+    #main-loading.load-hidden img {
+      visibility: hidden;
+    }
+  </style></body></html>
