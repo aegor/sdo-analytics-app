@@ -1,9 +1,10 @@
 import {Meteor} from 'meteor/meteor';
 // import { HTTP } from 'meteor/http';
 import {WebApp} from 'meteor/webapp';
-import {prepareSegmentPoint, debugLog} from '../imports/utils.js';
-import {Metrics} from '../imports/collections.js';
-import {elastic, influxdb} from '../imports/databases.js';
+import {prepareSegmentPoint, debugLog} from './lib/utils';
+import {Metrics} from '/imports/collections';
+import {elastic} from './drivers/influxdb';
+import {influxdb} from './drivers/elastic';
 
 const bodyParser = require('body-parser');
 const xheader = require('connect-header');

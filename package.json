@@ -12,6 +12,7 @@
     "elasticsearch": "^11.0.1",
     "fibers": "^1.0.13",
     "influx": "^4.2.0",
-    "meteor-node-stubs": "~0.2.0"
+    "meteor-node-stubs": "~0.2.0",
+    "uuid": "^2.0.2"
   }
 }

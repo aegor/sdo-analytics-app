@@ -1,4 +1,4 @@
-import {config} from '../imports/config.js';
+import {config} from '/imports/config';
 import {convert} from 'dotize';
 
 export const debugLog = function (m, o){
