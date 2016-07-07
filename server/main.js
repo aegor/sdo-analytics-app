@@ -1,16 +1,12 @@
 import {Meteor} from 'meteor/meteor';
 // import { HTTP } from 'meteor/http';
 import {WebApp} from 'meteor/webapp';
-const bodyParser = require('body-parser');
-const xheader = require('connect-header');
-
+import {prepareSegmentPoint, debugLog} from '../imports/utils.js';
 import {Metrics} from '../imports/collections.js';
-
-import {prepareSegmentPoint} from '../imports/utils.js';
 import {elastic, influxdb} from '../imports/databases.js';
 
-
-
+const bodyParser = require('body-parser');
+const xheader = require('connect-header');
 const Fiber = require('fibers');
 
 /* Stuff to mimicry to classic @connect workflow from meteor-based @connect API */
@@ -28,7 +24,8 @@ Meteor.startup(() => {
     Fiber(function () {
       res.writeHead(200);
       const point = prepareSegmentPoint(req);
-      console.log(point.tags);
+      debugLog('tags', point.tags);
+      debugLog('value', point.value);
       if(influxdb) {
         influxdb.writePoint(point.seriesName, point.value, point.tags, function (err, response) {
           if (err) {
@@ -37,7 +34,7 @@ Meteor.startup(() => {
         });
       }
       point.tags._id = Meteor.uuid();
-      //Metrics.insert(point.tags);
+      Metrics.insert(point.tags);
       res.end();
     }).run();
   });
