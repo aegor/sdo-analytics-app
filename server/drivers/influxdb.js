@@ -32,13 +32,16 @@ if (config.influxdb) {
       });
       var data = future.wait();
       if (!data.error && doCollection){
-        console.log("process collection");
+        //console.log("process collection");
+        // Strange behavior - if collection unpoblished, we ned to remove manually. If published - already removed
         influxdbCollection.remove({});
         for (var i in data[0]) {
           var v = data[0][i];
-          //v._id = v.value.toString();
+          var id = v.value;
+          delete(v.value);
+          delete(v.time);
           influxdbCollection.upsert(
-            {_id: v._id},
+            {_id: id},
             {
               $push: v
             },

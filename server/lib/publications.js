@@ -7,23 +7,23 @@ Meteor.publish('metrics', function() {
 });
 
 // Create influxdb "pseudo-collection",
-// Based on https://gist.github.com/makrem025/35543cd60aa88ca49fa0 proposal
+// Based on proposal from https://gist.github.com/makrem025/35543cd60aa88ca49fa0
 Meteor.publish("influxdbCollection", function () {
   var self = this;
-  var id = uuid();
-  var handle = influxdbCollection.find({})
-    .observeChanges({
+  //var id = uuid();
+  var handle = influxdbCollection.find().observeChanges({
       added: function (id, fields) {
-        console.log("We are adding to influxdbCollection in publish");
-        self.added("influxdbCollection"/*, id, fields.username*/);
+        console.log("addind: ", id, fields);
+        self.added("influxdbCollection", id, fields);
       },
       changed: function (id, fields) {
-        console.log("We are changing to influxdbCollection in publish");
-        self.changed("influxdbCollection"/*, id, fields.username*/);
+        console.log("change: ", id, fields);
+        self.changed("influxdbCollection", id, fields);
       },
-      removed: function (id) {
-        console.log("We are removing to influxdbCollection in publish");
-        self.removed("influxdbCollection"/*, id, fields.username*/);
+      removed: function (id, fields) {
+        console.log("We are removing to influxdbCollection in publish:");
+        console.log("remove: ", id, fields);
+        self.removed("influxdbCollection", id);
       }
     });
 

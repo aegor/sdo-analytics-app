@@ -6,15 +6,22 @@ import {influxdbCollection, Metrics} from '/imports/collections';
 import './main.html';
 const series = Meteor.subscribe('influxdbCollection', {
   onReady: function () {
-    console.log("onReady And the Items actually Arrive", arguments);
-    influx = influxdbCollection.find().fetch();
+    Tracker.autorun(function() {
+      console.log(new Date, " Influx onReady", arguments);
+      influx = influxdbCollection.find().fetch();
+      console.log(influxdbCollection.find().fetch());
+      debugger;
+    });
   },
   onError: function () { console.log("series Error", arguments); }
 });
 const metrics = Meteor.subscribe('metrics', {
   onReady: function () {
-    console.log("onReady And the Items actually Arrive", arguments);
-    mongo = Metrics.find().fetch();
+    Tracker.autorun(function() {
+      console.log(new Date, "Meteor onReady", arguments);
+      mongo = Metrics.find().fetch();
+      //console.log(Metrics.find().fetch());
+    });
   },
   onError: function () { console.log("metrics Error", arguments); }
 });
@@ -28,17 +35,6 @@ var mongo = {};
 });*/
 
 
-
-
-
-
-
-
-
-
-
-
-/*
 
 Template.hello.onCreated(function helloOnCreated() {
   // counter starts at 0
@@ -57,4 +53,4 @@ Template.hello.events({
     instance.counter.set(instance.counter.get() + 1);
   },
 });
-*/
+
