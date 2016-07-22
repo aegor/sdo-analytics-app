@@ -18,12 +18,12 @@ export const prepareSegmentPoint = function (req) {
     var v = r[i];
     /* check for empty objects, prevent to insert into database */
     if (!v || (typeof v === 'object' && _.isEmpty(v) )) {
-      debugLog('Empty object', {i, v});
+      //debugLog('Empty object', {i, v});
       continue;
     }
     /* Processing special cases of object representation */
     if (i.includes("context_library")) {
-      debugLog('Unregistered property', {i, v});
+      //debugLog('Unregistered property', {i, v});
       continue;
     }
     if (i.includes("context_traits_")) {
@@ -54,7 +54,7 @@ export const prepareSegmentPoint = function (req) {
       point[i] = v;
     }
     else {
-      debugLog('Unregistered property', {i, v});
+      //debugLog('Unregistered property', {i, v});
     }
   }
   res.value = point.time;
