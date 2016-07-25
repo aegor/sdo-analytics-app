@@ -7,7 +7,7 @@ export const config = {
   oauth_identityUrl: 'https://lms.edu-kuban.ru/oauth2/user_info',
   oauth_redirectUri: 'https://frontend.edu-kuban.ru/_oauth/django?close',
   oauth_requestPermissions: 'read',
-  slamDataURL: 'http://localhost:20223',
+  slamDataURL: 'http://localhost:10000',
   analyticsPrefix: '/analytics',
   analyticsPermURL: 'https://cms.edu-kuban.ru',
   influxdb: true,

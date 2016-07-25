@@ -4,6 +4,7 @@ import {ServiceConfiguration} from 'meteor/service-configuration';
 // import { HTTP } from 'meteor/http';
 import {WebApp} from 'meteor/webapp';
 import {prepareSegmentPoint, debugLog} from './lib/utils';
+import {slamDataSecurity} from './lib/slamDataSecurity';
 import {Metrics} from '/imports/collections';
 import {elastic} from './drivers/influxdb';
 import {influxdb} from './drivers/elastic';
@@ -18,7 +19,7 @@ const proxy = require('proxy-middleware');
 const cookies = require('connect-cookies');
 const serveStatic = require('serve-static');
 const path = require('path');
-
+const chain = require('connect-chain-if');
 
 /* Stuff to mimicry to classic @connect workflow from meteor-based @connect API */
 const app = WebApp.connectHandlers;
@@ -26,7 +27,7 @@ const app = WebApp.connectHandlers;
 Meteor.startup(() => {
   console.log("Started");
 
-  // conbfigure oauth service
+  // configure oauth service
   ServiceConfiguration.configurations.upsert(
     {service: "django"},
     {
@@ -42,75 +43,51 @@ Meteor.startup(() => {
     }
   );
 
-  // Redirect middleware initialization
-  app.use('/', redirect());
+  app.use(redirect());
   app.use(cookies());
-  // Redirect middleware use
-  app.use('/', function (req, res, next) {
-    console.log(req.url, req.cookies.get('meteor_login_token'));
-    var isLogged = false;
-    var isAdmin = false;
-    var isStaff = false;
-    if (req.cookies.get('meteor_login_token')) {
-      var user = Meteor.users.findOne({"services.resume.loginTokens.hashedToken": Accounts._hashLoginToken(req.cookies.get('meteor_login_token'))});
-      if (user._id) {
-        isLogged = true;
-        if (user.services.django.is_admin === 1) {
-          isAdmin = true;
-        }
-        if (user.services.django.is_staff === 1) {
-          isStaff = true;
-        }
-      }
+
+  // headers example
+  /*  app.use(xheader({
+   'X-Name': 'luics',
+   'X-Age': '25'
+   }));*/
+
+  app.use(slamDataSecurity);
+
+  proxyStart = function (urls) {
+    for (var i in urls) {
+      console.log(urls[i]);
+/*      app.use(urls[i], function (req,res,next){
+        console.log("req.url: ", req.url);
+        slamDataSecurity(req,res,next);
+      });*/
+      app.use(urls[i], proxy(url.parse(config.slamDataURL + urls[i])) );
     }
+  };
 
-    if ((req.url.startsWith(config.analyticsPrefix + '/index.html') || req.url.startsWith(config.analyticsPrefix + '/workspace.html'))) {
-      if (!isLogged) {
-        console.log('not logged');
-        res.redirect('/login');
-      }
+// Proxy to quasar API
+  proxyStart([
+    '/metadata',
+    '/mount',
+    '/data',
+    '/compile',
+    '/query',
+    '/server'
+  ]);
 
-      if (!isStaff) {
-        console.log('user is not in staff');
-        res.redirect(config.analyticsPermURL);
-      }
-      if (!isAdmin) {
-        if (req.url.startsWith(config.analyticsPrefix + '/index.html')) {
-          console.log('index.html allow only for admins');
-          res.redirect(config.analyticsPermURL);
-        }
-        if (req.url.startsWith(config.analyticsPrefix + '/workspace.html' && req.url.indexOf(".slam/edit") !== -1)) {
-          var redir = req.url.replace('.slam/edit', '.slam/view');
-          console.log('redirect to view');
-          res.redirect(redir);
-        }
-      }
-    }
-    next();
-  });
-  // --- Redirect
-  // Proxy meddleware start
-  app.use('/metadata', proxy(url.parse(config.slamDataURL + '/metadata')));
-  app.use('/mount', proxy(url.parse(config.slamDataURL + '/mount')));
-  app.use('/data', proxy(url.parse(config.slamDataURL + '/data')));
-  app.use('/compile', proxy(url.parse(config.slamDataURL + '/compile')));
-  app.use('/query', proxy(url.parse(config.slamDataURL + '/query')));
-  //app.use('/analytics', proxy(url.parse(config.slamDataURL + '/files')));
-
-  // --- Proxy
-  // Serve static content (meteor public folder serving is shit)
+  // Serve static content (meteor public folder serving is real shit)
   const serve = serveStatic(path.resolve('.') + '/../web.browser/app', {'index': ['index.html']});
   app.use(config.analyticsPrefix, function (req, res, next) {
-    console.log(config.analyticsPrefix);
     var tmp = serve(req, res, next);
     return tmp;
   });
-  app.use(xheader({
-    'X-Name': 'luics',
-    'X-Age': '25'
-  }));
+
+
+  // body parsers for json and forms
   app.use(bodyParser.json());                       // to support JSON-encoded bodies
   app.use(bodyParser.urlencoded({extended: true})); // to support URL-encoded bodies
+
+  // segment.io endpoint (must be last)
   app.use("/metrics", function (req, res, next) {
     Fiber(function () {
       res.writeHead(200);
@@ -126,7 +103,6 @@ Meteor.startup(() => {
       }
       point.tags._id = Meteor.uuid();
       Metrics.insert(point.tags);
-      //res.write();
       res.end();
     }).run();
   });
