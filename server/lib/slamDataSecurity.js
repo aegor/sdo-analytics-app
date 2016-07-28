@@ -46,12 +46,12 @@ export const slamDataSecurity = function (req, res, next) {
        console.log('index.html allow only for admins');
        res.redirect(config.analyticsPermURL);
        }*/
-      if (req.url.startsWith(config.analyticsPrefix + '/workspace.html' && req.url.indexOf(".slam/edit") !== -1)) {
+/*      if (req.url.startsWith(config.analyticsPrefix + '/workspace.html' && req.url.indexOf(".slam/edit") !== -1)) {
         var redir = req.url.replace('.slam/edit', '.slam/view');
         console.log('redirect to view');
         res.redirect(redir);
-      }
-      else if ((req.url.startsWith('/data') ||
+      }*/
+      if ((req.url.startsWith('/data') ||
         req.url.startsWith('/mount') ||
         req.url.startsWith('/server') ||
         req.url.startsWith('/metadata')) &&
@@ -61,8 +61,9 @@ export const slamDataSecurity = function (req, res, next) {
         res.end('{error: "slamdata protection"}');
         //res.redirect(config.analyticsPermURL);
       }
-      else {console.log("next int chain"); nextflag = true; next();}
+      else {console.log("next non-admin chain"); nextflag = true; next();}
     }
+    else {console.log("next admin chain"); nextflag = true; next();}
   }
   else {
     if (!nextFlag){console.log("next ext chain"); next();}

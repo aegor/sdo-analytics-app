@@ -1,7 +1,7 @@
 import {Meteor} from 'meteor/meteor';
 import { Template } from 'meteor/templating';
 import { ReactiveVar } from 'meteor/reactive-var';
-import {influxdbCollection, Metrics} from '/imports/collections';
+import {influxdbCollection, Metrics, Municipality} from '/imports/collections';
 import { AccountsCommon } from 'meteor/accounts-base';
 
 //import './main.html';
@@ -74,9 +74,10 @@ Router.route('/login', function () {
 Router.route('/', function () {
   this.redirect('/login');
 });
+/*
 Meteor.startup(() => {
   AccountsCommon.onLogin(function () {
     console.log("logged");
     window.location = window.location.href;
   });
-});
+});*/
