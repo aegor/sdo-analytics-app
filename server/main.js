@@ -19,7 +19,6 @@ const proxy = require('proxy-middleware');
 const cookies = require('connect-cookies');
 const serveStatic = require('serve-static');
 const path = require('path');
-const chain = require('connect-chain-if');
 
 /* Stuff to mimicry to classic @connect workflow from meteor-based @connect API */
 const app = WebApp.connectHandlers;

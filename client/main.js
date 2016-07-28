@@ -71,11 +71,9 @@ Template.hello.events({
 Router.route('/login', function () {
   this.render('login');
 });
-/*
 Router.route('/', function () {
-  this.redirect('/index.html');
+  this.redirect('/login');
 });
-*/
 Meteor.startup(() => {
   AccountsCommon.onLogin(function () {
     console.log("logged");

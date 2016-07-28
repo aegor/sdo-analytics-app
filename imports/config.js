@@ -5,7 +5,7 @@ export const config = {
   oauth_tokenUrl: 'https://lms.edu-kuban.ru/oauth2/access_token',
   oauth_loginUrl: 'https://lms.edu-kuban.ru/oauth2/authorize',
   oauth_identityUrl: 'https://lms.edu-kuban.ru/oauth2/user_info',
-  oauth_redirectUri: 'https://frontend.edu-kuban.ru/_oauth/django?close',
+  oauth_redirectUri: 'https://analytics.edu-kuban.ru/_oauth/django?close',
   oauth_requestPermissions: 'read',
   slamDataURL: 'http://localhost:10000',
   analyticsPrefix: '/analytics',
