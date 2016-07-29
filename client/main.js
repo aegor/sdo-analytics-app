@@ -1,7 +1,6 @@
 import {Meteor} from 'meteor/meteor';
 import { Template } from 'meteor/templating';
 import { ReactiveVar } from 'meteor/reactive-var';
-import {influxdbCollection, Metrics, Municipality} from '/imports/collections';
 import { AccountsCommon } from 'meteor/accounts-base';
 
 //import './main.html';
