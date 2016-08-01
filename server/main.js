@@ -87,22 +87,10 @@ Meteor.startup(() => {
 
   // segment.io endpoint (must be last)
   app.use("/metrics", function (req, res, next) {
-    Fiber(function () {
-      res.writeHead(200);
-      const point = prepareSegmentPoint(req);
-      debugLog("----------------------------------------------------------------------------------------------------");
-      debugLog('tags', point.tags);
-      if (influxdb) {
-        influxdb.writePoint(point.seriesName, point.value, point.tags, function (err, response) {
-          if (err) {
-            console.log("Influxdb: ", err)
-          }
-        });
-      }
-      point.tags._id = Meteor.uuid();
-      Metrics.insert(point.tags);
-      res.end();
-    }).run();
+    res.writeHead(200);
+    const point = prepareSegmentPoint(req);
+    point.tags._id = Meteor.uuid();
+    Metrics.insert(point.tags);
   });
 
 /*  Router.map(function() {
