@@ -27,6 +27,7 @@ export const config = {
     port: 3307
   },
   quasar: true,
+  quasarPrefix: '/query/fs/edx/meteor/',
   maxResults: 2000,
   debugLog: false
 };

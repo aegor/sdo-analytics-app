@@ -1,7 +1,6 @@
 import {Meteor} from 'meteor/meteor';
 import {config} from '/server/imports/config';
 import {ServiceConfiguration} from 'meteor/service-configuration';
-// import { HTTP } from 'meteor/http';
 import {WebApp} from 'meteor/webapp';
 import {prepareSegmentPoint} from '/server/apps/segment-aggregator/prepareSegmentPoints';
 import {debugLog} from '/server/lib/utils';

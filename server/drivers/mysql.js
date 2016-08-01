@@ -1,6 +1,5 @@
 import {config} from '/server/imports/config';
 import {validateReq} from '/server/lib/utils';
-
 const Future = require( 'fibers/future' );
 const m = require('mysql');
 
@@ -32,7 +31,7 @@ Meteor.call('mysql.query', {
 
 if (config.mysql) {
 
-  var my = function({query, limit, offset}){
+  export const my = function({query, limit, offset}){
     const self = this;
 
     const req =validateReq({query, limit, offset});
