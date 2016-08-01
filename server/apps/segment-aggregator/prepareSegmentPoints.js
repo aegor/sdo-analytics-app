@@ -1,4 +1,4 @@
-import {config} from '/server/imports/config';
+import {config} from '/server/config';
 import {convert} from 'dotize';
 
 export const prepareSegmentPoint = function (req) {

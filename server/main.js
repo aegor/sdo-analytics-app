@@ -1,5 +1,5 @@
 import {Meteor} from 'meteor/meteor';
-import {config} from '/server/imports/config';
+import {config} from '/server/config';
 import {ServiceConfiguration} from 'meteor/service-configuration';
 import {WebApp} from 'meteor/webapp';
 import {prepareSegmentPoint} from '/server/apps/segment-aggregator/prepareSegmentPoints';
@@ -90,7 +90,10 @@ Meteor.startup(() => {
     res.writeHead(200);
     const point = prepareSegmentPoint(req);
     point.tags._id = Meteor.uuid();
-    Metrics.insert(point.tags);
+    Fiber(function () {
+      Metrics.insert(point.tags);
+    }).run();
+    res.end();
   });
 
 /*  Router.map(function() {

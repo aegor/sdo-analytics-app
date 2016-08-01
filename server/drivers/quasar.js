@@ -1,4 +1,4 @@
-import {config} from '/server/imports/config';
+import {config} from '/server/config';
 import {validateReq} from '/server/lib/utils';
 import { HTTP } from 'meteor/http';
 

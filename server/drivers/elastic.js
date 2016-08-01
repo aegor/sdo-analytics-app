@@ -1,4 +1,4 @@
-import {config} from '/server/imports/config';
+import {config} from '/server/config';
 const elasticsearch = require('elasticsearch');
 
 export var elastic = null;

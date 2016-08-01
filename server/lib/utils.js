@@ -1,4 +1,4 @@
-import {config} from '/server/imports/config';
+import {config} from '/server/config';
 import {SimpleSchema} from 'meteor/aldeed:simple-schema';
 
 export const debugLog = function (m, o){

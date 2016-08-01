@@ -1,4 +1,4 @@
-import {config} from '/server/imports/config';
+import {config} from '/server/config';
 
 export const slamDataSecurity = function (req, res, next) {
   console.log("Slamdatasecurity: ", req.url, req.cookies.get('meteor_login_token'));

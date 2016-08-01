@@ -1,4 +1,4 @@
-import {config} from '/server/imports/config';
+import {config} from '/server/config';
 
 // elastic Segment points preparation stuff
 const indexName = !!config.elasticindexName ? config.elasticindexName : "edx-webpages";
