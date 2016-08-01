@@ -6,7 +6,7 @@ const m = require('mysql');
 // Example method call from client:
 /*
 Meteor.call('mysql.query', {
-  query: "1 + 1",
+  query: 'S.id,S.name as school,M.name as municipality from student_school S INNER JOIN student_municipality M ON M.id = S.municipality_id',
   limit: 20,
   offset: 0
 }, (err, res) => {
@@ -25,9 +25,9 @@ Meteor.call('mysql.query', {
  limit: 20,
  offset: 0
  });
- var objects = new Mongo.Collection('mysql_query');
- var count = objects.findOne({_count: { $exists: true}})._count
- objects.find({municipality: { $exists: true}}).fetch()
+ var mobjects = new Mongo.Collection('mysql_query');
+ var count = mobjects.findOne({_count: { $exists: true}})._count
+ mobjects.find({municipality: { $exists: true}}).fetch()
  */
 
 if (config.mysql) {
@@ -56,7 +56,7 @@ if (config.mysql) {
     const self = this;
     const req =validateReq({query, limit, offset});
     const q = 'SELECT ' + req.query + ' LIMIT ' + req.offset + ',' + req.limit;
-    const qc = 'SELECT COUNT(*) AS count,' + req.query + ' LIMIT ' + req.offset + ',' + req.limit;
+    const qc = 'SELECT COUNT(*) AS count,' + req.query;
     console.log("mysql: ", q);
     console.log("mysql: ", qc);
     var data = _mysql(q);
