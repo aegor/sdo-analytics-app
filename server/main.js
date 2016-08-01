@@ -1,10 +1,11 @@
 import {Meteor} from 'meteor/meteor';
-import {config} from '/imports/config';
+import {config} from '/server/imports/config';
 import {ServiceConfiguration} from 'meteor/service-configuration';
 // import { HTTP } from 'meteor/http';
 import {WebApp} from 'meteor/webapp';
-import {prepareSegmentPoint, debugLog} from './lib/utils';
-import {slamDataSecurity} from './lib/slamDataSecurity';
+import {prepareSegmentPoint} from '/server/apps/segment-aggregator/prepareSegmentPoints';
+import {debugLog} from '/server/lib/utils';
+import {slamDataSecurity} from '/server/apps/quasar-proxy/slamDataSecurity';
 import {Metrics} from '/imports/collections';
 import {elastic} from './drivers/influxdb';
 import {influxdb} from './drivers/elastic';
@@ -96,7 +97,7 @@ Meteor.startup(() => {
       if (influxdb) {
         influxdb.writePoint(point.seriesName, point.value, point.tags, function (err, response) {
           if (err) {
-            console.log("Influxdb ", err)
+            console.log("Influxdb: ", err)
           }
         });
       }

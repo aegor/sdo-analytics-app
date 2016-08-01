@@ -10,7 +10,7 @@ export const config = {
   slamDataURL: 'http://localhost:10000',
   analyticsPrefix: '/analytics',
   analyticsPermURL: 'https://cms.edu-kuban.ru',
-  influxdb: true,
+  influxdb: false,
   influxdbURL: "http://edx:edx@127.0.0.1:8086/edx",
   influxdbRequestTimeout: 1000,
   influxdbSeriesName: "edx_webpages",
@@ -18,5 +18,15 @@ export const config = {
   elasticURL: "localhost:9200",
   elasticLoglevel: "trace",
   elasticindexName: "edx-webpages",
+  mysql: true,
+  mysqlConnection: {
+    host     : '127.0.0.1',
+    user     : 'edxapp001',
+    password : 'password',
+    database : 'edxapp',
+    port: 3307
+  },
+  quasar: true,
+  maxResults: 2000,
   debugLog: false
 };

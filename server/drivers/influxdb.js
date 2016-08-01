@@ -1,4 +1,4 @@
-import {config} from '/imports/config';
+import {config} from '/server/imports/config';
 import {SimpleSchema} from 'meteor/aldeed:simple-schema';
 import {Meteor} from 'meteor/meteor';
 import {Mongo} from 'meteor/mongo';
@@ -37,7 +37,7 @@ if (config.influxdb) {
       var data = future.wait();
       if (!data.error && doCollection){
         //console.log("process collection");
-        // Strange behavior - if collection unpoblished, we ned to remove manually. If published - already removed
+        // Strange behavior - if collection unpublished, we need to remove manually. If published - already removed
         Influxdb.remove({});
         for (var i in data[0]) {
           var v = data[0][i];
@@ -63,6 +63,23 @@ if (config.influxdb) {
     }
   });
 }
+/*
+
+ Test call from browser:
+
+ Meteor.call('influxdb.query', {
+ query: "select value,label from edx_webpages where label != ''",
+ doCollection: 1
+ }, (err, res) => {
+ if (err) {
+ console.log("ERROR-ERROR!");
+ console.log(err);
+ } else {
+ console.log(res)
+ }
+ });
+
+ */
 
 // Create influxdb "pseudo-collection",
 // Based on proposal from https://gist.github.com/makrem025/35543cd60aa88ca49fa0
@@ -92,20 +109,4 @@ Meteor.publish("influxdbCollection", function () {
   });});
 
 
-/*
 
-Test call from browser:
-
-Meteor.call('influxdb.query', {
-query: "select value,label from edx_webpages where label != ''",
-doCollection: 1
-}, (err, res) => {
-if (err) {
-console.log("ERROR-ERROR!");
-console.log(err);
-} else {
-console.log(res)
-}
-});
-
-*/
