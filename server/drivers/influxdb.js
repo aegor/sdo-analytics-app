@@ -9,6 +9,8 @@ const influx = require('influx');
 
 export var influxdb = null;
 
+// EGOR need DO full refactoring as in mysql and quasar drivers
+
 // Stuff to initialize influxdb
 
 if (config.influxdb) {
@@ -18,6 +20,8 @@ if (config.influxdb) {
   var sq = Meteor.wrapAsync(influxdb.query,influxdb);
 
 // https://themeteorchef.com/snippets/synchronous-methods/
+
+
 
   Meteor.methods({
     'influxdb.query'({query, doCollection}) {
