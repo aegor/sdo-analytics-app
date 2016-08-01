@@ -2,7 +2,7 @@ import { Template } from 'meteor/templating';
 
 Template.login.onRendered(function () {
   Meteor.startup(function () {
-    console.log('login with SDO');
+    // console.log('login with SDO');
   });
 });
 

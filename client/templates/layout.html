@@ -1,0 +1,20 @@
+<template name="layout">
+<body>
+<header>
+<!-- {{> yield "header"}}-->
+    {{> header}}
+</header>
+<aside>
+<!-- {{> yield "sideleft"}}-->
+    {{> sideleft}}
+</aside>
+<!-- {{> yield "breadcrumb"}}-->
+{{> breadcrumb}}
+<article>
+ {{> yield}}
+</article>
+<footer>
+ {{> footer}}
+</footer>
+</body>
+</template>

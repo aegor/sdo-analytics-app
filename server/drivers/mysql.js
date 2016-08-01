@@ -65,7 +65,6 @@ if (config.mysql) {
     const self = this;
     const stuff = my({query, limit, offset});
     _(stuff).each(function (s) {
-      console.log("stuff: ", s);
       self.added('mysql_query', Random.id(), s);
     });
     self.ready();

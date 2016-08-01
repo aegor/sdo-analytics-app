@@ -2,6 +2,32 @@ import {config} from '/server/imports/config';
 import {validateReq} from '/server/lib/utils';
 import { HTTP } from 'meteor/http';
 
+// Example method call:
+/*
+  Meteor.call('quasar.query', {
+  query: "DISTINCT (municipality) FROM metrics ORDER BY municipality",
+  limit: 20,
+  offset: 0
+}, (err, res) => {
+  if (err) {
+    console.log("ERROR-ERROR!");
+    console.log(err.message);
+  } else {
+    console.log(res)
+  }
+});
+*/
+// Example subscription from client:
+/*
+ var handle = Meteor.subscribe('quasar_query', {
+ query: '1 + 1 AS test',
+ limit: 20,
+ offset: 0
+ });
+ var objects = new Mongo.Collection('quasar_query');
+ objects.find().fetch()
+ */
+
 if (config.quasar) {
   var quasar = function({query, limit, offset}){
     const self = this;
