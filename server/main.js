@@ -76,11 +76,10 @@ Meteor.startup(() => {
 
   // Serve static content (meteor public folder serving is real shit)
   const serve = serveStatic(path.resolve('.') + '/assets/app', {'index': ['index.html']});
-  app.use('/vendor', function (req, res, next) {
+  app.use('/assets', function (req, res, next) {
     var tmp = serve(req, res, next);
     return tmp;
   });
-
 
   // body parsers for json and forms
   app.use(bodyParser.json());                       // to support JSON-encoded bodies
