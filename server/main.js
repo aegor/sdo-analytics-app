@@ -75,8 +75,8 @@ Meteor.startup(() => {
   ]);
 
   // Serve static content (meteor public folder serving is real shit)
-  const serve = serveStatic(path.resolve('.') + '/../web.browser/app', {'index': ['index.html']});
-  app.use(config.analyticsPrefix, function (req, res, next) {
+  const serve = serveStatic(path.resolve('.') + '/assets/app', {'index': ['index.html']});
+  app.use('/vendor', function (req, res, next) {
     var tmp = serve(req, res, next);
     return tmp;
   });
@@ -105,4 +105,15 @@ Meteor.startup(() => {
       res.end();
     }).run();
   });
+
+/*  Router.map(function() {
+    this.route('pageNotFound', {
+      path: '/(.*)',
+      where: 'server',
+      action: function () {
+        this.response.writeHead(404);
+        this.response.end('404 (Not Found)');
+      }
+    });
+  });*/
 });
