@@ -1,3 +1,6 @@
-/**
- * Created by egor on 02.08.16.
- */
+Template.registerHelper('log', function(what) {
+  // You can use `this` and/or `Template.instance()`
+  // to get template data access
+  console.log(what);
+});
+
