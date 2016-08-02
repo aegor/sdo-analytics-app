@@ -16,6 +16,7 @@
     "fibers": "^1.0.13",
     "findit2": "^2.2.3",
     "influx": "^4.2.0",
+    "js-md5": "^0.4.1",
     "lodash.assign": "^4.1.0",
     "meteor-node-stubs": "~0.2.0",
     "mysql": "^2.11.1",
