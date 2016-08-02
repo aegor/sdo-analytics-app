@@ -1,7 +1,7 @@
 import {config} from '/server/config';
 
 export const slamDataSecurity = function (req, res, next) {
-  console.log("Slamdatasecurity: ", req.url, req.cookies.get('meteor_login_token'));
+  // console.log("Slamdatasecurity: ", req.url, req.cookies.get('meteor_login_token'));
   var nextFlag = false;
   if (req.url.startsWith(config.analyticsPrefix + '/index.html') ||
     req.url.startsWith(config.analyticsPrefix + '/workspace.html') ||
@@ -61,12 +61,12 @@ export const slamDataSecurity = function (req, res, next) {
         res.end('{error: "slamdata protection"}');
         //res.redirect(config.analyticsPermURL);
       }
-      else {console.log("next non-admin chain"); nextflag = true; next();}
+      else {/*console.log("next non-admin chain"); */nextflag = true; next();}
     }
-    else {console.log("next admin chain"); nextflag = true; next();}
+    else {/*console.log("next admin chain");*/ nextflag = true; next();}
   }
   else {
-    if (!nextFlag){console.log("next ext chain"); next();}
+    if (!nextFlag){/*console.log("next ext chain");*/ next();}
   }
 };
 

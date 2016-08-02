@@ -55,12 +55,8 @@ Meteor.startup(() => {
 
   proxyStart = function (urls) {
     for (var i in urls) {
-      console.log(urls[i]);
-/*      app.use(urls[i], function (req,res,next){
-        console.log("req.url: ", req.url);
-        slamDataSecurity(req,res,next);
-      });*/
       app.use(urls[i], proxy(url.parse(config.slamDataURL + urls[i])) );
+      //app.use('/files' + urls[i], proxy(url.parse(config.slamDataURL + urls[i])) );
     }
   };
 
@@ -85,7 +81,7 @@ Meteor.startup(() => {
   app.use(bodyParser.json());                       // to support JSON-encoded bodies
   app.use(bodyParser.urlencoded({extended: true})); // to support URL-encoded bodies
 
-  // segment.io endpoint (must be last)
+  // segment.io endpoint
   app.use("/metrics", function (req, res, next) {
     res.writeHead(200);
     const point = prepareSegmentPoint(req);
@@ -96,14 +92,22 @@ Meteor.startup(() => {
     res.end();
   });
 
-/*  Router.map(function() {
-    this.route('pageNotFound', {
-      path: '/(.*)',
-      where: 'server',
-      action: function () {
-        this.response.writeHead(404);
-        this.response.end('404 (Not Found)');
-      }
-    });
-  });*/
+  function test404(req,res,next){
+    var isRoute = false;
+    for (var i in Router.routes){
+      if (Router.routes[i].path)
+        Router.routes[i].path() === url.parse(req.url).pathname ? isRoute = true : isRoute = false;
+    }
+   if (isRoute) {
+     next()
+   }
+   else {
+     res.writeHead(404, {"Content-Type": "text/html"});
+     console.log("404 error: ", req.url);
+     res.end('404 СТРАНИЦА НЕ НАЙДЕНА');
+   }
+  }
+  // (must be last)
+  app.use(test404);
+
 });
