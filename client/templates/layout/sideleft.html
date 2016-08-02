@@ -29,8 +29,9 @@
                     <ul class="nav side-menu" style="">
                         <li class="active"><a><i class="fa fa-table"></i> ОТЧЁТЫ <span class="fa fa-chevron-down"></span></a>
                             <ul class="nav child_menu" style="display: block;">
-                                <li><a href="tables.html">Активность по входу в систему</a></li>
-                                <li class="current-page"><a href="tables_dynamic.html">Активность по доступу к курсам</a></li>
+                                {{#each dahboards}}
+                                    <li><a href="{{url}}">{{description}}</a></li> <!-- class="current-page"-->
+                                {{/each}}
                             </ul>
                         </li>
                     </ul>

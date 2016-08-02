@@ -1,27 +1,28 @@
-export const dashboards = [
+export var dashboards = [
   {
-    name: "",
-    description: "",
-    url: ""
+    name: "UserActivityByLogin",
+    description: "Активность пользователей по входу в систему",
+    url: "/" + "UserActivityByLogin"
   },
   {
-    name: "",
-    description: "",
-    url: ""
+    name: "userActivityByCourses",
+    description: "Активность пользователей по доступу к курсам",
+    url: "/" + "userActivityByCourses"
   },
   {
-    name: "",
-    description: "",
-    url: ""
+    name: "userActivityByURL",
+    description: "Активность пользователей по разделам сайта",
+    url: "/" + "userActivityByURL"
   },
   {
-    name: "",
-    description: "",
-    url: ""
+    name: "userInactivity",
+    description: "Неактивные пользователи",
+    url: "/" + "userInactivity"
   },
   {
-    name: "",
-    description: "",
-    url: ""
+    name: "staffActivityByCourses",
+    description: "Активность преподавателей по курсам",
+    url: "/" + "staffActivityByCourses"
   }
 ];
+
