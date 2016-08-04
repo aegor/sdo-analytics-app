@@ -108,6 +108,6 @@ Meteor.startup(() => {
    }
   }
   // (must be last)
-  app.use(test404);
+  //app.use(test404);
 
 });

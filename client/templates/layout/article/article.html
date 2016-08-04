@@ -1,0 +1,12 @@
+<template name="article">
+    <!--EGOR - Placeholder for article head-->
+    {{> yield "articleHead"}}
+    <div class="right_col" role="main" style="min-height: 3085px;">
+        {{> yield "articleTitle"}}
+        <div class="clearfix"></div>
+        <div class="row">
+            <!--EGOR - Placeholder for article content-->
+            {{> yield "articleContent"}}
+        </div>
+    </div> <!-- right-col -->
+</template>

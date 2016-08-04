@@ -1,0 +1,14 @@
+<template name="AnalyticsApplication">
+{{> contentFor region="headerContent" template="headerContent"}}
+{{> contentFor region="footerContent" template="footerContent"}}
+{{> contentFor region="sideleftTitle" template="sideleftTitleContent"}}
+{{> contentFor region="sideleftProfile" template="sideleftProfileContent"}}
+{{> contentFor region="sideleftContent" template="sideleftMenu"}}
+{{> contentFor region="sideleftButtons" template="sideleftButtons"}}
+{{> contentFor region="articleHead" template="articleHead"}}
+{{#contentFor "articleHeadContent"}}
+    {{> articleHeadL}}
+    {{> articleHeadR}}
+{{/contentFor}}
+{{> contentFor region="articleTitle" template="articleTitleContent"}}
+</template>

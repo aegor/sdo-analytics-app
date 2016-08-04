@@ -1,0 +1,69 @@
++------------------------------------------------------------------------------------------+
+| key             | types                         | occurrences | percents                 |
+| --------------- | ----------------------------- | ----------- | ------------------------ |
+| _id             | String                        |      638905 | 100.00000000000000000000 |
+| receivedAt      | Number                        |      638895 |  99.99843482207839429066 |
+| sentAt          | Number                        |      638895 |  99.99843482207839429066 |
+| time            | Number                        |      638895 |  99.99843482207839429066 |
+| type            | String                        |      638895 |  99.99843482207839429066 |
+| userId          | String                        |      638113 |  99.87603790860926267214 |
+| email           | String                        |      631430 |  98.83002950360382499184 |
+| username        | String                        |      631430 |  98.83002950360382499184 |
+| full_name       | String                        |      631098 |  98.77806559660669449840 |
+| user_class      | String                        |      623585 |  97.60214742410843768994 |
+| municipality    | String                        |      623580 |  97.60136483514763483527 |
+| school          | String                        |      623580 |  97.60136483514763483527 |
+| event           | String                        |      621612 |  97.29333782017670273490 |
+| course          | String                        |      620941 |  97.18831438163732627800 |
+| category        | String                        |      620084 |  97.05417863375619447197 |
+| label           | String                        |      619736 |  96.99971044208450621227 |
+| org             | String                        |      619433 |  96.95228555106001522290 |
+| run             | String                        |      619432 |  96.95212903326785180980 |
+| mode            | String                        |      619414 |  96.94931171300898142817 |
+| education_model | String                        |      174377 |  27.29310304348846827338 |
+| is_staff        | Number (14115),String (11616) |       25731 |   4.02735931006957237344 |
+| ip              | String                        |       19233 |   3.01030669661373773138 |
+| page_path       | String                        |       18856 |   2.95129948896940863534 |
+| page_title      | String                        |       18856 |   2.95129948896940863534 |
+| page_url        | String                        |       18856 |   2.95129948896940863534 |
+| userAgent       | String                        |       18856 |   2.95129948896940863534 |
+| page_referrer   | String                        |       15339 |   2.40082641394260498657 |
+| is_admin        | String (11616),Number (66)    |       11682 |   1.82844084801339801238 |
+| path            | String                        |        9552 |   1.49505795071254721229 |
+| title           | String                        |        9552 |   1.49505795071254721229 |
+| url             | String                        |        9552 |   1.49505795071254721229 |
+| referrer        | String                        |        7414 |   1.16042291107441641884 |
+| roles[0]        | String                        |        3201 |   0.50101345270423613965 |
+| page_search     | String                        |        2845 |   0.44529311869526766454 |
+| search          | String                        |        1608 |   0.25168060979331824401 |
+| roles[1]        | String                        |         943 |   0.14759627800690244825 |
+| asset_url       | String                        |         798 |   0.12490119814369898821 |
+| display_name    | String                        |         696 |   0.10893638334337656104 |
+| roles[2]        | String                        |         587 |   0.09187594399793395927 |
+| boname          | String                        |         408 |   0.06385925920128970867 |
+| id              | String                        |          34 |   0.00532160493344080877 |
+| number          | String                        |          19 |   0.00297383805104045216 |
+| name            | String                        |          18 |   0.00281732025888042827 |
+| date            | String                        |           4 |   0.00062607116864009512 |
+| provider        | String                        |           2 |   0.00031303558432004756 |
++------------------------------------------------------------------------------------------+
+--
+MongoDB shell version: 3.2.6
+connecting to: 127.0.0.1:3001/meteor
+Variety: A MongoDB Schema Analyzer
+Version 1.5.0, released 14 May 2015
+Using collection of "metrics"
+Using query of { }
+Using limit of 638905
+Using maxDepth of 99
+Using sort of { "_id" : -1 }
+Using outputFormat of "ascii"
+Using persistResults of false
+Using resultsDatabase of "varietyResults"
+Using resultsCollection of "metricsKeys"
+Using resultsUser of null
+Using resultsPass of null
+Using logKeysContinuously of false
+Using excludeSubkeys of [ ]
+Using arrayEscape of "XX"
+Using plugins of [ ]
