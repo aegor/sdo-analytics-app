@@ -1,0 +1,11 @@
+<template name="sideleftMenus">
+    <!-- sideleftMenus template content -->
+    <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+        <div class="menu_section active">
+            <h3>{{> yield "sideleftMenusHeaderContent"}}</h3>
+            <ul class="nav side-menu" style="">
+                {{> yield "sideleftMenusContent"}}
+            </ul>
+        </div>
+    </div>
+</template>

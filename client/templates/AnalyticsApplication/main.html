@@ -1,14 +1,87 @@
 <template name="AnalyticsApplication">
-{{> contentFor region="headerContent" template="headerContent"}}
-{{> contentFor region="footerContent" template="footerContent"}}
-{{> contentFor region="sideleftTitle" template="sideleftTitleContent"}}
-{{> contentFor region="sideleftProfile" template="sideleftProfileContent"}}
-{{> contentFor region="sideleftContent" template="sideleftMenu"}}
-{{> contentFor region="sideleftButtons" template="sideleftButtons"}}
-{{> contentFor region="articleHead" template="articleHead"}}
-{{#contentFor "articleHeadContent"}}
-    {{> articleHeadL}}
-    {{> articleHeadR}}
-{{/contentFor}}
-{{> contentFor region="articleTitle" template="articleTitleContent"}}
+
+    {{#contentFor "headerContent"}}
+        <ul class="nav navbar-nav navbar-right">
+            {{> loginButtons}}
+        </ul>
+    {{/contentFor}}
+
+    {{#contentFor "footerContent"}}
+        <footer>
+            <div class="pull-right">
+                Защищено © 2016. Система дистанционного образования Кубани&nbsp;<a href="https://edu-kuban.ru">(СДО
+                Кубани)</a>
+            </div>
+            <div class="clearfix"></div>
+        </footer>
+    {{/contentFor}}
+
+    {{#contentFor "sideleftTitleContent"}}
+        <a href="/" class="site_title"><i class="fa fa-adn"></i> <span>СДО Аналитика</span></a>
+    {{/contentFor}}
+
+    {{#contentFor "sideleftProfileContent"}}
+        <div class="profile">
+            <div class="profile_pic">
+                <img src="/favicon.ico" alt="..." class="img-circle profile_img">
+            </div>
+            <div class="profile_info">
+                <span>Здравствуйте,</span>
+                <h2>Игорь Николаевич!</h2>
+            </div>
+        </div>
+        <br>
+    {{/contentFor}}
+
+    {{#contentFor "sideleftMenusHeaderContent"}}
+        Отчёты
+    {{/contentFor}}
+
+    {{#contentFor "sideleftMenusContent"}}
+        <li class="active"><a><i class="fa fa-home"></i> По посещаемости <span class="fa fa-chevron-down"></span></a>
+            <ul class="nav child_menu" style="display: block;">
+                <li><a href="#">Dashboard</a></li>
+                <li><a href="#">Dashboard2</a></li>
+                <li><a href="#">Dashboard3</a></li>
+            </ul>
+        </li>
+
+        <li class="active"><a><i class="fa fa-home"></i> По курсам <span class="fa fa-chevron-down"></span></a>
+            <ul class="nav child_menu" style="display: block;">
+                <li><a href="#">Dashboard</a></li>
+                <li><a href="#">Dashboard2</a></li>
+                <li><a href="#">Dashboard3</a></li>
+            </ul>
+        </li>
+    {{/contentFor}}
+
+    {{> contentFor region="sideleftContent" template="sideleftMenus"}}
+
+    {{> contentFor region="sideleftButtonsContent" template="sideleftButtons"}}
+
+    {{#contentFor "pageTitleContent"}}
+        <div class="title_left">
+            <h3>Статистика по пользователям
+                <small>&nbsp;Общая статистика по входу в систему</small>
+            </h3>
+        </div>
+        {{> pageTitleR}}
+    {{/contentFor}}
+
+    {{#contentFor "pageContent"}}
+        <!--EGOR здесь должен быть цикл для множества статей-->
+        {{> article}}
+    {{/contentFor}}
+
+    {{#contentFor "articleTitleContent"}}
+        <!-- articleTitleContent-->
+        <h2>Здесь форма
+            <small>и таблица</small>
+        </h2>
+    {{/contentFor}}
+
+    {{#contentFor "articleContent"}}
+        {{> articleTitle}}
+        TEST
+    {{/contentFor}}
 </template>

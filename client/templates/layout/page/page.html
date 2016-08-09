@@ -1,0 +1,12 @@
+<template name="page">
+    <!-- page template content -->
+    <div class="right_col" role="main" style="min-height: 3104px;">
+        <div class="">
+            {{> pageTitle}}
+            <div class="clearfix"></div>
+            <div class="row">
+                {{> yield "pageContent"}}
+            </div>
+        </div>
+    </div>
+</template>
