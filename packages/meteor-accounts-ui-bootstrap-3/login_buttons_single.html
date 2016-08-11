@@ -1,0 +1,12 @@
+<template name="_loginButtonsLoggedOutSingleLoginButton">
+	{{#if configured}}
+        <li class="">
+        <a href="javascript:;" class="login-button user-profile dropdown-toggle btn-{{capitalizedName}}" data-toggle="dropdown" aria-expanded="false">
+            <img src="/favicon.ico" alt="">Войти
+            <span class=" fa fa-angle-down"></span>
+        </a>
+        </li>
+	{{else}}
+		<button class="login-button btn btn-block configure-button btn-danger">{{i18n 'loginButtonsLoggedOutSingleLoginButton.configure'}} {{capitalizedName}}</button>
+	{{/if}}
+</template>
