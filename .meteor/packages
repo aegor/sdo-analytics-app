@@ -31,3 +31,4 @@ iron:router
 meteorhacks:aggregate
 aegor:accounts-ui-bootstrap-3-genterella
 twbs:bootstrap
+aegor:tabular
