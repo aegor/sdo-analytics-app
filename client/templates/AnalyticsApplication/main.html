@@ -20,7 +20,7 @@
         <a href="/" class="site_title"><i class="fa fa-adn"></i> <span>СДО Аналитика</span></a>
     {{/contentFor}}
 
-    {{#contentFor "sideleftProfileContent"}}
+<!--    {{#contentFor "sideleftProfileContent"}}
         <div class="profile">
             <div class="profile_pic">
                 <img src="/favicon.ico" alt="..." class="img-circle profile_img">
@@ -31,7 +31,7 @@
             </div>
         </div>
         <br>
-    {{/contentFor}}
+    {{/contentFor}}-->
 
     {{#contentFor "sideleftMenusHeaderContent"}}
         Отчёты
@@ -40,17 +40,16 @@
     {{#contentFor "sideleftMenusContent"}}
         <li class="active"><a><i class="fa fa-home"></i> По посещаемости <span class="fa fa-chevron-down"></span></a>
             <ul class="nav child_menu" style="display: block;">
-                <li><a href="#">Dashboard</a></li>
-                <li><a href="#">Dashboard2</a></li>
-                <li><a href="#">Dashboard3</a></li>
+                <li><a href="/Common">Посещаемость пользователями</a></li>
+                <li><a href="/Noact">Неактивные пользователи</a></li>
+                <!--<li><a href="/Act">Самые активные пользователи</a></li>-->
             </ul>
         </li>
 
         <li class="active"><a><i class="fa fa-home"></i> По курсам <span class="fa fa-chevron-down"></span></a>
             <ul class="nav child_menu" style="display: block;">
-                <li><a href="#">Dashboard4</a></li>
-                <li><a href="#">Dashboard5</a></li>
-                <li><a href="#">Dashboard7</a></li>
+                <li><a href="/Students">Посещаемость курсов студентами</a></li>
+                <li><a href="/Teachers">Активность преподавателей по курсам</a></li>
             </ul>
         </li>
     {{/contentFor}}
@@ -59,30 +58,11 @@
 
     {{> contentFor region="sideleftButtonsContent" template="sideleftButtons"}}
 
-    {{#contentFor "pageTitleContent"}}
-        <div class="title_left">
-            <h3>Статистика по пользователям
-                <small>&nbsp;Общая статистика по входу в систему</small>
-            </h3>
-        </div>
-        {{> pageTitleR}}
-    {{/contentFor}}
 
     {{#contentFor "pageContent"}}
         <!--EGOR здесь должен быть цикл для множества статей-->
         {{> article}}
     {{/contentFor}}
 
-    {{#contentFor "articleTitleContent"}}
-        <!-- articleTitleContent-->
-        <h2>Здесь форма
-            <small>и таблица</small>
-        </h2>
-    {{/contentFor}}
-
-    {{#contentFor "articleContent"}}
-        {{> articleTitle}}
-        ТЕСТ
-        {{> daterangepicker}}
-    {{/contentFor}}
+    {{> modalDialogSmall}}
 </template>

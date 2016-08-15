@@ -1,0 +1,11 @@
+[[[[[ ~/Projects/edx/SEGMENT/segment-server-meteor ]]]]]
+
+=> Started proxy.
+=> Started MongoDB.
+=> Errors prevented startup:
+   
+   While building package aegor:tabular:
+   error: File not found: common.js
+   
+=> Your application has errors. Waiting for file change.
+=> Modified -- restarting.

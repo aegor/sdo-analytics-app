@@ -47,14 +47,15 @@ if (config.quasar) {
   var quasar = function({query, limit, offset}){
     const self = this;
     const req =validateReq({query, limit, offset});
-    var q = 'SELECT ' + req.query + ' LIMIT ' + req.limit + ' OFFSET ' + req.offset;
+    var q = 'SELECT ' + req.query + ' OFFSET ' + req.offset + ' LIMIT ' + req.limit;
     var qc = 'SELECT COUNT(*) '
       + req.query.substring(req.query.indexOf('FROM') === -1 ? req.query.indexOf('from') : req.query.indexOf('FROM'))
       + ' LIMIT 1';
     console.log("quasar: ", q);
     console.log("quasar: ", qc);
-    var data = _quasar(q);
     var count = _quasar(qc);
+    if( count.length === 0 ) return {values:[], count: 0}
+    var data = _quasar(q);
     return {values:data, count: count[0][0]};
   };
   Meteor.methods({

@@ -11,7 +11,7 @@ export const debugLog = function (m, o){
 export const validateReq = function ({query, limit, offset}){
   new SimpleSchema({
     query: {type: String},
-    limit: {type: Number, max: config.maxResults, min: 1},
+    limit: {type: Number, max: config.maxResults+1, min: 1},
     offset: {type: Number}
   }).validate({query, limit, offset});
   return {query, limit, offset};

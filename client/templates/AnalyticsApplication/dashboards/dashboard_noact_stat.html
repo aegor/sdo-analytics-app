@@ -1,0 +1,19 @@
+<template name="dashboardNoactStat">
+<!-- dashboardNoactStat template content -->
+    {{> AnalyticsApplication}}
+    {{#contentFor "pageTitleContent"}}
+        <div class="title_left">
+            <h3>Статистика по неактивным пользователям
+                <small><br>Статистика по пользователям, не входившим в систему в указанный интервал времени</small>
+            </h3>
+        </div>
+        <!--{{> pageTitleR}}-->
+    {{/contentFor}}
+
+    {{#contentFor "articleTitleContent"}}
+        <!-- articleTitleContent-->
+        <h2>Пользователи, зарегистрированные в системе,
+            <small><b>но не имеющие активности в указанный период</b></small>
+        </h2>
+    {{/contentFor}}
+</template>

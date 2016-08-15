@@ -17,7 +17,7 @@ Template.daterangepicker.onRendered(function() {
 
   var cb = function(start, end, label) {
     console.log(start.toISOString(), end.toISOString(), label);
-    $('#reportrange_right span').html(start.format('D-MM-YYYY') + ' / ' + end.format('D-MM-YYYY'));
+    $('#reportrange_right span').html(start.format('DD-MM-YYYY') + ' - ' + end.format('DD-MM-YYYY'));
   };
 
   var optionSet1 = {
@@ -36,25 +36,25 @@ Template.daterangepicker.onRendered(function() {
     ranges: {
       'Сегодня': [moment(), moment()],
       'Вчера': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-      'Неделю назад': [moment().subtract(6, 'days'), moment()],
-      'Месяц назад': [moment().subtract(29, 'days'), moment()],
+      'За неделю': [moment().subtract(6, 'days'), moment()],
+      'За месяц': [moment().subtract(30, 'days'), moment()],
       'Этот месяц': [moment().startOf('month'), moment().endOf('month')],
-      'Последний месяц': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+      'Пред. месяц': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
     },
     opens: 'right',
     buttonClasses: ['btn btn-default'],
     applyClass: 'btn-small btn-primary',
     cancelClass: 'btn-small',
-    format: 'D-MM-YYYY',
-    titleFormat: 'D-MM-YYYY',
+    format: 'DD-MM-YYYY',
+    titleFormat: 'DD-MM-YYYY',
     language: 'ru',
-    separator: ' / ',
+    separator: ' - ',
     locale: {
       applyLabel: 'Готово',
       cancelLabel: 'Очистить',
       fromLabel: 'От',
       toLabel: 'До',
-      format: 'D-MM-YYYY',
+      format: 'DD-MM-YYYY',
       customRangeLabel: 'От и До',
       daysOfWeek: ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'],
       monthNames: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'],
@@ -62,7 +62,7 @@ Template.daterangepicker.onRendered(function() {
     }
   };
 
-  $('#reportrange_right span').html(moment().subtract(29, 'days').format('D-MM-YYYY') + ' - ' + moment().format('D-MM-YYYY'));
+  $('#reportrange_right span').html(moment().subtract(29, 'days').format('DD-MM-YYYY') + ' - ' + moment().format('DD-MM-YYYY'));
 
   $('#reportrange_right').daterangepicker(optionSet1, cb);
 
@@ -73,7 +73,7 @@ Template.daterangepicker.onRendered(function() {
     console.log("hide event fired");
   });
   $('#reportrange_right').on('apply.daterangepicker', function(ev, picker) {
-    console.log("apply event fired, start/end dates are " + picker.startDate.format('D-MM-YYYY') + " / " + picker.endDate.format('D-MM-YYYY'));
+    console.log("apply event fired, start/end dates are " + picker.startDate.format('DD-MM-YYYY') + ' - ' + picker.endDate.format('DD-MM-YYYY'));
   });
   $('#reportrange_right').on('cancel.daterangepicker', function(ev, picker) {
     console.log("cancel event fired");

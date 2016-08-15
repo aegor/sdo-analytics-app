@@ -1,0 +1,19 @@
+<template name="dashboardTeachersStat">
+<!-- dashboardTeachersStat template content -->
+    {{> AnalyticsApplication}}
+    {{#contentFor "pageTitleContent"}}
+        <div class="title_left">
+            <h3>Статистика по активности преподавателей по предметам
+                <small><br>Статистика по работе преподавателей с курсами (создание, ведение)</small>
+            </h3>
+        </div>
+        <!--{{> pageTitleR}}-->
+    {{/contentFor}}
+
+    {{#contentFor "articleTitleContent"}}
+        <!-- articleTitleContent-->
+        <h2>Поле муниципалитета является обязательным
+            <small><b>(если Вы собираетесь использовать фильтры по образовательному учреждению)</b></small>
+        </h2>
+    {{/contentFor}}
+</template>
