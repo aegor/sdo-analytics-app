@@ -1,10 +1,10 @@
 <template name="dashboardTeachersStat">
-<!-- dashboardTeachersStat template content -->
+    <!-- commonStat template content -->
     {{> AnalyticsApplication}}
     {{#contentFor "pageTitleContent"}}
         <div class="title_left">
-            <h3>Статистика по активности преподавателей по предметам
-                <small><br>Статистика по работе преподавателей с курсами (создание, ведение)</small>
+            <h3>Статистика по преподавателям
+                <small><br>Статистика активности преподавателей по курсам</small>
             </h3>
         </div>
         <!--{{> pageTitleR}}-->
@@ -15,5 +15,83 @@
         <h2>Поле муниципалитета является обязательным
             <small><b>(если Вы собираетесь использовать фильтры по образовательному учреждению)</b></small>
         </h2>
+    {{/contentFor}}
+
+    {{#contentFor "articleContent"}}
+        {{> articleTitle}}
+        <!--Начальная форма ввода данных-->
+        <form class="form-horizontal form-label-left input_mask">
+
+            <!--муниципалитет/школа-->
+            <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                <div class="col-md-4 col-sm-4 col-xs-12 form-group">
+                    <select title="Муниципалитет" id="municipality" class="form-control">
+                        <option value="_default_" selected>Муниципалитет</option>
+                        {{#each m}}
+                            <option>{{municipality}}</option>
+                        {{/each}}
+                    </select>
+                </div>
+<!--                <div class="col-md-8 col-sm-8 col-xs-12 form-group">
+                    <select title="Школа" id="school" class="form-control">
+                        <option value="_default_" selected>Образовательное учреждение
+                        </option>
+                    </select>
+                </div>-->
+            </div>
+
+            <div class="form-group col-md-8 col-sm-8 col-xs-12">
+                <label class="control-label col-md-2 col-sm-2 col-xs-4">Страница:</label>
+                <div class="col-md-2 col-sm-2 col-xs-4">
+                    <input id="page_start" type="number" class="form-control" value="{{page.start}}">
+                </div>
+                <label class="control-label col-md-1 col-sm-1 col-xs-1">Из:&nbsp;{{page.count}}</label>
+                <label class="control-label col-md-2 col-sm-2 col-xs-2">Записей на странице:</label>
+                <div class="col-md-2 col-sm-2 col-xs-4">
+                    <input id="page_per" type="number" class="form-control" value="{{page.per}}">
+                </div>
+
+            </div>
+
+            <div class="timeline tags col-md-3 col-sm-3 col-xs-12 form-group">
+                <a id="sqlaction" class="tag">
+                    <span><b>ВЫПОЛНИТЬ ЗАПРОС</b></span>
+                    <!--<span class="glyphicon glyphicon-refresh glyphicon-spin"></span>-->
+                </a>
+            </div>
+        </form>
+        <!--        Счётчик: {{dashboardTable.count}} <br>
+        Счётчик страниц: {{page.count}} <br>-->
+
+
+        <!--Таблица-->
+        {{#if dashboardTable.values}}
+            <table id="datatable-buttons" class="table table-striped table-bordered">
+                <thead>
+                <tr>
+                    <th>Муниципалитет</th>
+                    <th>Учреждение</th>
+                    <th>ФИО</th>
+                    <th>email</th>
+                    <th>Количество созданных курсов</th>
+                    <th>Количество подписчиков на все курсы</th>
+                    <th>На сколько курсов подписан</th>
+                </tr>
+                </thead>
+                <tbody>
+                {{#each dashboardTable.values}}
+                    <tr>
+                        <td>{{municipality}}</td>
+                        <td>{{school}}</td>
+                        <td>{{full_name}}</td>
+                        <td>{{email}}</td>
+                        <td>{{a_count}}</td>
+                        <td>Требуется OLAP</td>
+                        <td>{{e_count}}</td>
+                    </tr>
+                {{/each}}
+                </tbody>
+            </table>
+        {{/if}}
     {{/contentFor}}
 </template>
