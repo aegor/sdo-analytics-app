@@ -1,10 +1,10 @@
 <template name="dashboardNoactStat">
-<!-- dashboardNoactStat template content -->
+    <!-- NoactStat template content -->
     {{> AnalyticsApplication}}
     {{#contentFor "pageTitleContent"}}
         <div class="title_left">
             <h3>Статистика по неактивным пользователям
-                <small><br>Статистика по пользователям, не входившим в систему в указанный интервал времени</small>
+                <small><br>Статистика по последнему входу пользователей в систему</small>
             </h3>
         </div>
         <!--{{> pageTitleR}}-->
@@ -12,8 +12,91 @@
 
     {{#contentFor "articleTitleContent"}}
         <!-- articleTitleContent-->
-        <h2>Пользователи, зарегистрированные в системе,
-            <small><b>но не имеющие активности в указанный период</b></small>
+        <h2>Поле муниципалитета является обязательным
+            <small><b>(если Вы собираетесь использовать фильтры по образовательному учреждению)</b></small>
         </h2>
+    {{/contentFor}}
+
+    {{#contentFor "articleContent"}}
+        {{> articleTitle}}
+        <!--Начальная форма ввода данных-->
+        <form class="form-horizontal form-label-left input_mask">
+            <!--datepicker -->
+            <div class="form-group col-md-4 col-sm-4 col-xs-12">
+                <label class="control-label col-md-3 col-sm-3 col-xs-3">С даты:</label>
+                <div class="col-md-9 col-sm-9 col-xs-9">
+                    {{> daterangepicker}}
+                </div>
+            </div>
+            <!--муниципалитет/школа-->
+            <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                <div class="col-md-4 col-sm-4 col-xs-12 form-group">
+                    <select title="Муниципалитет" id="municipality" class="form-control">
+                        <option value="_default_" selected>Муниципалитет</option>
+                        {{#each m}}
+                            <option>{{municipality}}</option>
+                        {{/each}}
+                    </select>
+                </div>
+                <div class="col-md-8 col-sm-8 col-xs-12 form-group">
+                    <select title="Школа" id="school" class="form-control">
+                        <option value="_default_" selected>Образовательное учреждение
+                        </option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group col-md-8 col-sm-8 col-xs-12">
+                <label class="control-label col-md-2 col-sm-2 col-xs-4">Страница:</label>
+                <div class="col-md-2 col-sm-2 col-xs-4">
+                    <input id="page_start" type="number" class="form-control" value="{{page.start}}">
+                </div>
+                <label class="control-label col-md-1 col-sm-1 col-xs-1">Из:&nbsp;{{page.count}}</label>
+                <label class="control-label col-md-2 col-sm-2 col-xs-2">Записей на странице:</label>
+                <div class="col-md-2 col-sm-2 col-xs-4">
+                    <input id="page_per" type="number" class="form-control" value="{{page.per}}">
+                </div>
+
+            </div>
+
+            <div class="timeline tags col-md-3 col-sm-3 col-xs-12 form-group">
+                <a id="sqlaction" class="tag">
+                    <span><b>ВЫПОЛНИТЬ ЗАПРОС</b></span>
+                    <!--<span class="glyphicon glyphicon-refresh glyphicon-spin"></span>-->
+                </a>
+            </div>
+        </form>
+        <!--        Счётчик: {{dashboardTable.count}} <br>
+        Счётчик страниц: {{page.count}} <br>-->
+
+
+        <!--Таблица-->
+        {{#if dashboardTable.values}}
+            <table id="datatable-buttons" class="table table-striped table-bordered">
+                <thead>
+                <tr>
+                    <th class="col-md-2">Время последнего входа</th>
+                    <th>Муниципалитет</th>
+                    <th>Учреждение</th>
+                    <th>Роль</th>
+                    <th>ФИО</th>
+                    <th>email</th>
+                </tr>
+                </thead>
+                <tbody>
+                {{#each dashboardTable.values}}
+                    <tr>
+                        <td>{{time}}</td>
+                        <td>{{municipality}}</td>
+                        <td>{{school}}</td>
+                        <td>{{role}}</td>
+                        <td>{{full_name}}</td>
+                        <td>{{email}}</td>
+                        <td>{{page_path}}</td>
+                    </tr>
+                {{/each}}
+                </tbody>
+            </table>
+        {{/if}}
     {{/contentFor}}
 </template>

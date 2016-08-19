@@ -86,6 +86,15 @@ COALESCE(c.municipality, "") != ""
         console.log(res);
         page.count = parseInt(Math.ceil(res.count/page.per));
         Session.set('pageInfo', page);
+        for (var i in res.values){
+          res.values[i].time = moment(res.values[i].time).format('DD MMMM YYYY, hh:mm');
+          if (res.values[i].is_staff === 1){
+            res.values[i].role = "Преподаватель"
+          }
+          else {
+            res.values[i].role = "Учащийся"
+          }
+        }
         Session.set('dashboardTable', res);
       }
     });
