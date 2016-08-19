@@ -1,6 +1,10 @@
 import { Session } from 'meteor/session';
 import {municipalities} from '/imports/municipalities';
 
+Tracker.autorun(function () {
+  Meteor.subscribe("userData");
+});
+
 // global helpers for iron router
 Template.registerHelper('log', function(what) {
   // You can use `this` and/or `Template.instance()`
@@ -75,12 +79,12 @@ Meteor.startup(function(){
   //
   // Модели обучения
   // name as model from student_educationmodel
-  mysqlReq('name as model from student_educationmodel', 2000, 0, 'eduModel');
+  // mysqlReq('name as model from student_educationmodel', 2000, 0, 'eduModel');
 
   // TODO муниципалитеты/школы
 
   // Курсы
   // id as name, display_name as label from course_overviews_courseoverview
-  mysqlReq('id as name, display_name as label from course_overviews_courseoverview', 2000, 0, 'eduCourses');
+  // mysqlReq('id as name, display_name as label from course_overviews_courseoverview', 2000, 0, 'eduCourses');
 });
 

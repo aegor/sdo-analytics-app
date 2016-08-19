@@ -102,8 +102,8 @@ COALESCE(c.municipality, "") != ""
 
 });
 
-// EGOR, Оно тебе надо?
-// Template.commonStat.onCreated(function() {
-//   // onCreated used to change virtual dom before it render to native dom
-//   console.log("Template commonStat is created");
-// });
+Template.dashboardCommonStat.onCreated(function() {
+  // onCreated used to change virtual dom before it render to native dom
+  console.log("Template commonStat is created");
+//  if (!Meteor.userId() && !Meteor.user(Meteor.userId()) && !Meteor.user(Meteor.userId()).services.django && Meteor.user(Meteor.userId()).services.django.is_staff !== 1) {Router.go('/')}
+});

@@ -42,6 +42,11 @@ Meteor.startup(() => {
     }
   );
 
+  Meteor.publish("userData", function () {
+    return Meteor.users.find({_id: this.userId},
+      {fields: {'services.django.is_staff': 1}});
+  });
+
   app.use(redirect());
   app.use(cookies());
 
