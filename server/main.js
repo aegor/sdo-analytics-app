@@ -92,6 +92,7 @@ Meteor.startup(() => {
     const point = prepareSegmentPoint(req);
     point.tags._id = Meteor.uuid();
     Fiber(function () {
+      console.log(point.tags);
       Metrics.insert(point.tags);
     }).run();
     res.end();
