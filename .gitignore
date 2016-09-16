@@ -3,3 +3,4 @@
 node_modules/
 DataTables*
 **/parent-.git/
+server/config.js
